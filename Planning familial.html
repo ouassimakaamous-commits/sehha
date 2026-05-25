@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Sehha — Planning familial</title>
+<meta name="viewport" content="width=1440" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="app/tailwind-config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app/styles.css">
+</head>
+<body class="min-w-[1440px]">
+
+<div class="flex min-h-screen">
+  <div id="chrome"></div>
+
+  <main id="main" class="flex-1 min-w-0">
+    <div class="px-7 py-6 space-y-6">
+
+      <!-- header -->
+      <div class="flex items-end justify-between">
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.14em] text-ink-500 font-semibold mb-1.5">Programme · Planning Familial</div>
+          <h1 class="text-[26px] font-bold tracking-tight text-ink-900 leading-tight">Espacement des naissances</h1>
+          <p class="text-[13.5px] text-ink-600 mt-1">418 clientes actives · 6 méthodes proposées · taux de continuité <span class="font-semibold text-mint-700">84 %</span></p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button data-toast="Export PDF généré" class="h-10 px-3.5 rounded-xl border border-ink-200 text-[12.5px] font-semibold text-ink-700 flex items-center gap-2 hover:bg-ink-50 bg-white">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+            Exporter
+          </button>
+          <button data-toast="Nouvelle consultation PF" class="h-10 px-3.5 rounded-xl bg-mint-700 text-white text-[12.5px] font-semibold flex items-center gap-2 hover:bg-mint-800">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            Nouvelle saisie
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI cards -->
+      <div class="grid grid-cols-4 gap-5">
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="text-[12px] text-ink-600 font-medium mb-2">Nouvelles clientes</div>
+          <div class="flex items-end gap-2"><div class="text-[28px] font-bold num leading-none">37</div><span class="text-[11px] font-bold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md mb-1">+12</span></div>
+          <div class="text-[11px] text-ink-500 mt-2">ce mois · vs. 25 en avril</div>
+          <svg viewBox="0 0 200 28" class="w-full h-7 mt-3"><path d="M0,24 L25,20 L50,22 L75,15 L100,16 L125,11 L150,12 L175,8 L200,10" fill="none" stroke="#3A8C61" stroke-width="1.6"/></svg>
+        </div>
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="text-[12px] text-ink-600 font-medium mb-2">Clientes de retour</div>
+          <div class="flex items-end gap-2"><div class="text-[28px] font-bold num leading-none">152</div><span class="text-[11px] font-bold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md mb-1">+8 %</span></div>
+          <div class="text-[11px] text-ink-500 mt-2">renouvellements ce mois</div>
+          <div class="mt-3 flex h-2 rounded-full overflow-hidden bg-ink-100">
+            <span class="bg-mint-600" style="width:42%"></span><span class="bg-mint-400" style="width:31%"></span><span class="bg-mint-300" style="width:27%"></span>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="text-[12px] text-ink-600 font-medium mb-2">Méthode la + utilisée</div>
+          <div class="text-[20px] font-bold leading-none">COC <span class="text-[14px] text-ink-500 font-medium">· 38 %</span></div>
+          <div class="text-[11px] text-ink-500 mt-2">158 clientes</div>
+          <div class="mt-3 flex items-center gap-2">
+            <span class="text-[10.5px] text-ink-500">vs.</span>
+            <span class="text-[11.5px] font-semibold">DIU 21 %</span>
+            <span class="text-[11.5px] font-semibold">PMP 14 %</span>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="text-[12px] text-ink-600 font-medium mb-2">Taux de continuité 12 mois</div>
+          <div class="flex items-end gap-2"><div class="text-[28px] font-bold num leading-none">84 %</div><span class="text-[11px] font-bold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md mb-1">+2 pt</span></div>
+          <div class="text-[11px] text-ink-500 mt-2">cible nationale 80 %</div>
+          <div class="mt-3 h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-600 rounded-full" style="width:84%"></div></div>
+        </div>
+      </div>
+
+      <!-- Donut + stacked -->
+      <div class="grid grid-cols-12 gap-5">
+        <div class="col-span-5 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-[15px] font-bold text-ink-900">Distribution par méthode</h3>
+              <p class="text-[11.5px] text-ink-500 mt-0.5">418 clientes actives</p>
+            </div>
+            <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+              <button class="seg-btn is-active">Mois</button>
+              <button class="seg-btn">Trim.</button>
+              <button class="seg-btn">Année</button>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-6">
+            <svg viewBox="0 0 120 120" class="w-44 h-44">
+              <!-- COC 38% -->
+              <circle cx="60" cy="60" r="44" stroke="#2D6F4D" stroke-width="20" fill="none" stroke-dasharray="105.1 276.5" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+              <!-- DIU 21% -->
+              <circle cx="60" cy="60" r="44" stroke="#3A8C61" stroke-width="20" fill="none" stroke-dasharray="58.1 276.5" stroke-dashoffset="-105.1" transform="rotate(-90 60 60)"/>
+              <!-- PMP 14% -->
+              <circle cx="60" cy="60" r="44" stroke="#4DA876" stroke-width="20" fill="none" stroke-dasharray="38.7 276.5" stroke-dashoffset="-163.2" transform="rotate(-90 60 60)"/>
+              <!-- Injectables 12% -->
+              <circle cx="60" cy="60" r="44" stroke="#6FBE8E" stroke-width="20" fill="none" stroke-dasharray="33.2 276.5" stroke-dashoffset="-201.9" transform="rotate(-90 60 60)"/>
+              <!-- Implants 9% -->
+              <circle cx="60" cy="60" r="44" stroke="#9CD2B2" stroke-width="20" fill="none" stroke-dasharray="24.9 276.5" stroke-dashoffset="-235.1" transform="rotate(-90 60 60)"/>
+              <!-- Condoms 6% -->
+              <circle cx="60" cy="60" r="44" stroke="#C7E6D2" stroke-width="20" fill="none" stroke-dasharray="16.6 276.5" stroke-dashoffset="-260.0" transform="rotate(-90 60 60)"/>
+              <text x="60" y="58" text-anchor="middle" font-size="22" font-weight="700" fill="#0F1A14" font-family="Plus Jakarta Sans">418</text>
+              <text x="60" y="74" text-anchor="middle" font-size="10" fill="#6B7770">clientes</text>
+            </svg>
+            <ul class="flex-1 space-y-1.5 text-[12.5px]">
+              <li class="flex items-center justify-between gap-3"><span class="inline-flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm bg-mint-700"></span>COC</span><span class="num font-semibold">38 %</span><span class="text-ink-500 num text-[11px]">158</span></li>
+              <li class="flex items-center justify-between gap-3"><span class="inline-flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm bg-mint-600"></span>DIU</span><span class="num font-semibold">21 %</span><span class="text-ink-500 num text-[11px]">88</span></li>
+              <li class="flex items-center justify-between gap-3"><span class="inline-flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm bg-mint-500"></span>PMP</span><span class="num font-semibold">14 %</span><span class="text-ink-500 num text-[11px]">58</span></li>
+              <li class="flex items-center justify-between gap-3"><span class="inline-flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm bg-mint-400"></span>Injectables</span><span class="num font-semibold">12 %</span><span class="text-ink-500 num text-[11px]">50</span></li>
+              <li class="flex items-center justify-between gap-3"><span class="inline-flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm bg-mint-300"></span>Implants</span><span class="num font-semibold">9 %</span><span class="text-ink-500 num text-[11px]">38</span></li>
+              <li class="flex items-center justify-between gap-3"><span class="inline-flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm bg-mint-200"></span>Condoms</span><span class="num font-semibold">6 %</span><span class="text-ink-500 num text-[11px]">26</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-span-7 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-[15px] font-bold text-ink-900">Nouvelles vs. retour, par méthode</h3>
+              <p class="text-[11.5px] text-ink-500 mt-0.5">Cumul des 6 derniers mois</p>
+            </div>
+            <div class="flex items-center gap-3 text-[11.5px]">
+              <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-mint-600"></span>Nouvelles</span>
+              <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-mint-300"></span>Retour</span>
+            </div>
+          </div>
+
+          <svg viewBox="0 0 600 260" class="w-full h-[260px]">
+            <g stroke="#EEF2F0" stroke-width="1"><line x1="40" y1="40" x2="580" y2="40"/><line x1="40" y1="90" x2="580" y2="90"/><line x1="40" y1="140" x2="580" y2="140"/><line x1="40" y1="190" x2="580" y2="190"/></g>
+            <g fill="#94A09A" font-size="10" font-family="JetBrains Mono"><text x="32" y="44" text-anchor="end">200</text><text x="32" y="94" text-anchor="end">150</text><text x="32" y="144" text-anchor="end">100</text><text x="32" y="194" text-anchor="end">50</text></g>
+            <g>
+              <!-- COC -->
+              <g transform="translate(60,0)"><rect x="0" y="40" width="50" height="150" rx="4" fill="#9CD2B2"/><rect x="0" y="40" width="50" height="48" rx="4" fill="#3A8C61"/></g>
+              <!-- DIU -->
+              <g transform="translate(150,0)"><rect x="0" y="80" width="50" height="110" rx="4" fill="#9CD2B2"/><rect x="0" y="80" width="50" height="32" rx="4" fill="#3A8C61"/></g>
+              <!-- PMP -->
+              <g transform="translate(240,0)"><rect x="0" y="100" width="50" height="90" rx="4" fill="#9CD2B2"/><rect x="0" y="100" width="50" height="22" rx="4" fill="#3A8C61"/></g>
+              <!-- Inject -->
+              <g transform="translate(330,0)"><rect x="0" y="110" width="50" height="80" rx="4" fill="#9CD2B2"/><rect x="0" y="110" width="50" height="18" rx="4" fill="#3A8C61"/></g>
+              <!-- Implants -->
+              <g transform="translate(420,0)"><rect x="0" y="130" width="50" height="60" rx="4" fill="#9CD2B2"/><rect x="0" y="130" width="50" height="22" rx="4" fill="#3A8C61"/></g>
+              <!-- Condoms -->
+              <g transform="translate(510,0)"><rect x="0" y="150" width="50" height="40" rx="4" fill="#9CD2B2"/><rect x="0" y="150" width="50" height="10" rx="4" fill="#3A8C61"/></g>
+            </g>
+            <g fill="#94A09A" font-size="11" font-family="Plus Jakarta Sans" text-anchor="middle">
+              <text x="85" y="212">COC</text><text x="175" y="212">DIU</text><text x="265" y="212">PMP</text><text x="355" y="212">Inject.</text><text x="445" y="212">Implants</text><text x="535" y="212">Condoms</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Recent consultations -->
+      <div class="bg-white rounded-2xl border border-ink-200 shadow-card overflow-hidden">
+        <div class="flex items-center justify-between px-5 py-4 border-b border-ink-100">
+          <div>
+            <h3 class="text-[15px] font-bold text-ink-900">Consultations récentes</h3>
+            <p class="text-[11.5px] text-ink-500 mt-0.5">7 derniers jours</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <label class="flex items-center gap-2 h-9 px-3 rounded-xl border border-ink-200 text-[12px]">
+              <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-ink-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <input class="outline-none w-44 text-[12.5px]" placeholder="Rechercher une cliente…" />
+            </label>
+            <button class="h-9 px-3 rounded-xl border border-ink-200 text-[12px] font-semibold flex items-center gap-1.5 hover:bg-ink-50">Toutes méthodes <svg viewBox="0 0 24 24" class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></button>
+          </div>
+        </div>
+        <table class="w-full text-[12.5px]">
+          <thead class="text-[10.5px] uppercase tracking-wider text-ink-500 bg-ink-50/60">
+            <tr>
+              <th class="text-left font-semibold px-5 py-2.5">Cliente</th>
+              <th class="text-left font-semibold px-3 py-2.5">N° ID</th>
+              <th class="text-left font-semibold px-3 py-2.5">Méthode</th>
+              <th class="text-left font-semibold px-3 py-2.5">Type</th>
+              <th class="text-left font-semibold px-3 py-2.5">Date visite</th>
+              <th class="text-left font-semibold px-3 py-2.5">Prochaine visite</th>
+              <th class="text-right font-semibold px-5 py-2.5"></th>
+            </tr>
+          </thead>
+          <tbody id="fpBody" class="divide-y divide-ink-100"></tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="app/data.js"></script>
+<script src="app/chrome.js"></script>
+<script>
+  Chrome.mount({ active: 'pf', breadcrumb: ['CSU Moussa Bnou Nouceir', 'Programmes', 'Planning familial'] });
+
+  (function () {
+    const tbody = document.getElementById('fpBody');
+    const typeBadge = {
+      'Pose': 'text-mint-700 bg-mint-100',
+      'Renouvellement': 'text-ink-700 bg-ink-100',
+      'Nouvelle': 'text-amber-700 bg-amber-100',
+    };
+    tbody.innerHTML = SEHHA.fp.map(c => `
+      <tr class="hover:bg-ink-50/60">
+        <td class="px-5 py-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-mint-100 grid place-items-center text-mint-800 font-bold text-[11px]">${c.name.split(' ').map(x=>x[0]).slice(0,2).join('')}</div>
+            <div>
+              <div class="font-semibold text-ink-900">${c.name}</div>
+              <div class="text-[11px] text-ink-500">${c.age} ans</div>
+            </div>
+          </div>
+        </td>
+        <td class="px-3 py-3 mono text-ink-500">${c.id}</td>
+        <td class="px-3 py-3 font-semibold">${c.method}</td>
+        <td class="px-3 py-3"><span class="text-[10.5px] font-bold ${typeBadge[c.type]} px-1.5 py-0.5 rounded-md">${c.type}</span></td>
+        <td class="px-3 py-3 num">${c.date}</td>
+        <td class="px-3 py-3 num">${c.next}</td>
+        <td class="px-5 py-3 text-right">
+          <a href="Patient.html" data-toast="Ouverture du dossier ${c.name}" class="text-[11.5px] font-semibold text-mint-700 hover:underline">Ouvrir le dossier →</a>
+        </td>
+      </tr>
+    `).join('');
+  })();
+</script>
+
+</body>
+</html>

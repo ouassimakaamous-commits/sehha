@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Sehha — Tableau de bord</title>
+<meta name="viewport" content="width=1440" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="app/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+        colors: {
+          mint: {
+            50:  '#F1F9F4',
+            100: '#E2F2E7',
+            200: '#C7E6D2',
+            300: '#9CD2B2',
+            400: '#6FBE8E',
+            500: '#4DA876',
+            600: '#3A8C61',
+            700: '#2D6F4D',
+            800: '#1F4F37',
+            900: '#143324',
+          },
+          ink: {
+            900: '#0F1A14',
+            800: '#1A2620',
+            700: '#2E3A33',
+            600: '#4A5852',
+            500: '#6B7770',
+            400: '#94A09A',
+            300: '#C2CAC6',
+            200: '#E2E7E4',
+            100: '#EEF2F0',
+            50:  '#F7F9F8',
+          },
+        },
+        boxShadow: {
+          card: '0 1px 2px rgba(15, 26, 20, 0.04), 0 1px 1px rgba(15, 26, 20, 0.02)',
+          pop:  '0 8px 24px rgba(15, 26, 20, 0.08)',
+        },
+        borderRadius: {
+          'xl2': '14px',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html, body { background: #F4F6F5; font-feature-settings: "ss01","cv11"; }
+  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0F1A14; }
+  .num { font-variant-numeric: tabular-nums; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  /* subtle hairline */
+  .hairline { box-shadow: inset 0 0 0 1px #E2E7E4; }
+  /* placeholder stripe */
+  .stripe-bg {
+    background-image: repeating-linear-gradient(45deg, #EEF2F0 0 6px, #F7F9F8 6px 12px);
+  }
+  /* scrollbar light */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #C2CAC6; border-radius: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+</style>
+</head>
+<body class="min-w-[1440px]">
+
+<!-- ───────────────────────── LAYOUT ───────────────────────── -->
+<div class="flex min-h-screen">
+
+  <!-- ░░░ SIDEBAR ░░░ -->
+  <aside class="w-[248px] shrink-0 bg-white border-r border-ink-200 flex flex-col">
+    <!-- brand -->
+    <div class="h-[68px] px-5 flex items-center gap-2.5 border-b border-ink-200">
+      <div class="w-9 h-9 rounded-xl bg-mint-600 grid place-items-center shadow-sm relative">
+        <!-- crescent + cross mark -->
+        <svg viewBox="0 0 24 24" class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 13.5A8 8 0 1 1 11 4.06"/>
+          <path d="M16 3v6"/>
+          <path d="M13 6h6"/>
+        </svg>
+      </div>
+      <div class="leading-tight">
+        <div class="text-[17px] font-bold tracking-tight text-ink-900">Sehha</div>
+        <div class="text-[10px] uppercase tracking-[0.14em] text-ink-500 font-medium">CSU · Khémisset</div>
+      </div>
+    </div>
+
+    <!-- nav -->
+    <nav class="px-3 py-4 flex-1 overflow-y-auto">
+      <div class="text-[10px] uppercase tracking-[0.14em] text-ink-400 font-semibold px-3 mb-2">Espace de travail</div>
+      <ul class="space-y-0.5 text-[13.5px]">
+        <!-- active -->
+        <li>
+          <a href="Tableau de bord.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-mint-100 text-mint-800 font-semibold">
+            <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+            Tableau de bord
+          </a>
+        </li>
+        <li>
+          <a href="Rendez-vous.html" class="flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-ink-50">
+            <span class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Rendez-vous</span>
+            <span class="text-[11px] font-semibold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md num">14</span>
+          </a>
+        </li>
+        <li>
+          <a href="Patient.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-ink-50">
+            <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Patients
+          </a>
+        </li>
+
+        <div class="text-[10px] uppercase tracking-[0.14em] text-ink-400 font-semibold px-3 mt-5 mb-2">Programmes</div>
+
+        <li>
+          <a href="Vaccination.html" class="flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-ink-50">
+            <span class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>Vaccination</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          </a>
+        </li>
+        <li><a href="Planning familial.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-ink-50"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>Planning familial</a></li>
+        <li><a href="CPN-CPoN.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-ink-50"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-7 11-7 11"/><path d="M12 8v4"/></svg>CPN / CPoN</a></li>
+        <li><a href="Programme.html?p=nutrition" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-ink-50"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M5 7v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7"/><path d="M9 7V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3"/></svg>Nutrition</a></li>
+        <li><a href="Programme.html?p=ist" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-ink-50"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>IST / SIDA</a></li>
+        <li><a href="Programme.html?p=cme" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-ink-50"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6H4zM4 14h10v6H4zM18 14h2v6h-2z"/></svg>CME &lt;5 ans</a></li>
+        <li><a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-500 hover:bg-ink-50"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>Voir les 10 programmes</a></li>
+
+        <div class="text-[10px] uppercase tracking-[0.14em] text-ink-400 font-semibold px-3 mt-5 mb-2">Reporting</div>
+        <li>
+          <a href="Fiche mensuelle.html" class="flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-ink-50">
+            <span class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>Fiche mensuelle</span>
+            <span class="text-[10px] font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded-md">À soumettre</span>
+          </a>
+        </li>
+        <li><a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-ink-50"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>Statistiques</a></li>
+        <li><a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-ink-50"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Historique</a></li>
+      </ul>
+    </nav>
+
+    <!-- promo / resource card (original copy, not TeamHub's) -->
+    <div class="px-3 pb-4">
+      <div class="rounded-xl2 bg-mint-700 text-white p-4 relative overflow-hidden">
+        <!-- decorative ring -->
+        <div class="absolute -right-6 -top-6 w-20 h-20 rounded-full border-2 border-white/15"></div>
+        <div class="absolute -right-3 -top-3 w-14 h-14 rounded-full border-2 border-white/10"></div>
+        <div class="text-[11px] uppercase tracking-[0.12em] font-semibold text-mint-200 mb-1">Ressources MS</div>
+        <div class="text-[14.5px] font-bold leading-snug mb-1">Guide PNI 2025</div>
+        <div class="text-[11.5px] text-mint-100/90 leading-snug mb-3">Calendrier vaccinal et fiches techniques du Ministère de la Santé.</div>
+        <a href="#" data-toast="Téléchargement du guide PNI 2025…" class="inline-flex items-center gap-1.5 text-[12px] font-semibold bg-white text-mint-800 px-2.5 py-1.5 rounded-lg hover:bg-mint-50">
+          Télécharger
+          <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ░░░ MAIN ░░░ -->
+  <main class="flex-1 min-w-0">
+    <!-- topbar -->
+    <header class="h-[68px] bg-white border-b border-ink-200 px-7 flex items-center gap-6">
+      <!-- breadcrumb -->
+      <div class="flex items-center gap-2 text-[13px]">
+        <span class="text-ink-500">CSU Moussa Bnou Nouceir</span>
+        <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-ink-300" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        <span class="text-ink-900 font-semibold">Tableau de bord</span>
+      </div>
+
+      <!-- search -->
+      <div class="flex-1 max-w-[420px] ml-4">
+        <label class="flex items-center gap-2 h-10 px-3.5 rounded-xl bg-ink-50 border border-transparent focus-within:border-mint-400 focus-within:bg-white">
+          <svg viewBox="0 0 24 24" class="w-4 h-4 text-ink-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input class="bg-transparent outline-none text-[13px] text-ink-800 placeholder:text-ink-500 flex-1" placeholder="Rechercher un patient, RDV, programme…" />
+          <span class="text-[10.5px] mono text-ink-500 border border-ink-300 rounded px-1.5 py-0.5">⌘ K</span>
+        </label>
+      </div>
+
+      <!-- right cluster -->
+      <div class="flex items-center gap-2.5 ml-auto">
+        <!-- lang -->
+        <button data-lang-toggle class="h-10 px-3 rounded-xl border border-ink-200 text-[12px] font-semibold flex items-center gap-1.5 hover:bg-ink-50">
+          <span class="text-mint-700" data-lang-fr>FR</span><span class="text-ink-300">/</span><span class="text-ink-400" data-lang-ar>AR</span>
+        </button>
+        <!-- date -->
+        <button data-toast="Sélectionnez une date pour filtrer" class="h-10 px-3 rounded-xl border border-ink-200 text-[12px] font-semibold text-ink-700 flex items-center gap-2 hover:bg-ink-50">
+          <svg viewBox="0 0 24 24" class="w-4 h-4 text-ink-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          25/05/2026
+        </button>
+        <!-- bell -->
+        <button data-toast="3 nouvelles notifications" class="w-10 h-10 rounded-xl border border-ink-200 grid place-items-center relative hover:bg-ink-50">
+          <svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-ink-700" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white"></span>
+        </button>
+        <!-- avatar -->
+        <div class="flex items-center gap-3 pl-2.5 ml-1 border-l border-ink-200 h-10">
+          <div class="w-9 h-9 rounded-full bg-mint-200 grid place-items-center text-mint-800 font-bold text-[13px]">FE</div>
+          <div class="leading-tight pr-1">
+            <div class="text-[13px] font-semibold text-ink-900">Fatima El Idrissi</div>
+            <div class="text-[11px] text-ink-500">Infirmière chef</div>
+          </div>
+          <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-ink-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+      </div>
+    </header>
+
+    <!-- ░░ CONTENT ░░ -->
+    <div class="px-7 py-6 space-y-6">
+
+      <!-- greeting + actions -->
+      <div class="flex items-end justify-between">
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.14em] text-ink-500 font-semibold mb-1.5">Lundi · 25 Mai 2026</div>
+          <h1 class="text-[26px] font-bold tracking-tight text-ink-900 leading-tight">Bonjour Fatima, voici votre journée.</h1>
+          <p class="text-[13.5px] text-ink-600 mt-1">14 rendez-vous programmés · La fiche du mois doit être soumise dans <span class="font-semibold text-amber-700">6 jours</span>.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button data-toast="Export PDF en préparation…" class="h-10 px-3.5 rounded-xl border border-ink-200 text-[12.5px] font-semibold text-ink-700 flex items-center gap-2 hover:bg-ink-50 bg-white">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+            Exporter
+          </button>
+          <button data-toast="Préférences enregistrées" class="h-10 px-3.5 rounded-xl border border-ink-200 text-[12.5px] font-semibold text-ink-700 flex items-center gap-2 hover:bg-ink-50 bg-white">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Personnaliser
+          </button>
+          <button data-toast="Saisie ouverte" class="h-10 px-3.5 rounded-xl bg-mint-700 text-white text-[12.5px] font-semibold flex items-center gap-2 hover:bg-mint-800">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            Nouvelle saisie
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══ KPI ROW ═══ -->
+      <div class="grid grid-cols-4 gap-5">
+        <!-- KPI 1 -->
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-mint-100 grid place-items-center text-mint-700">
+                <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="text-[12px] text-ink-600 font-medium">Patients ce mois</div>
+            </div>
+            <button class="w-6 h-6 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
+              <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+            </button>
+          </div>
+          <div class="flex items-end gap-2 mb-1">
+            <div class="text-[30px] font-bold num tracking-tight leading-none">1 284</div>
+            <div class="text-[11px] font-bold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md mb-1 inline-flex items-center gap-0.5"><svg viewBox="0 0 24 24" class="w-2.5 h-2.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg>+12%</div>
+          </div>
+          <div class="text-[11.5px] text-ink-500">vs. 1 146 le mois dernier</div>
+          <!-- mini sparkline -->
+          <svg viewBox="0 0 200 36" class="w-full mt-3 h-9">
+            <defs><linearGradient id="g1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#4DA876" stop-opacity=".35"/><stop offset="1" stop-color="#4DA876" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0,28 L20,24 L40,26 L60,18 L80,20 L100,14 L120,16 L140,10 L160,12 L180,6 L200,8 L200,36 L0,36 Z" fill="url(#g1)"/>
+            <path d="M0,28 L20,24 L40,26 L60,18 L80,20 L100,14 L120,16 L140,10 L160,12 L180,6 L200,8" fill="none" stroke="#3A8C61" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- KPI 2 -->
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-mint-100 grid place-items-center text-mint-700">
+                <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              </div>
+              <div class="text-[12px] text-ink-600 font-medium">RDV aujourd'hui</div>
+            </div>
+            <button class="w-6 h-6 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
+              <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+            </button>
+          </div>
+          <div class="flex items-end gap-2 mb-1">
+            <div class="text-[30px] font-bold num tracking-tight leading-none">14</div>
+            <div class="text-[11px] font-bold text-ink-700 bg-ink-100 px-1.5 py-0.5 rounded-md mb-1">– 3 reportés</div>
+          </div>
+          <div class="text-[11.5px] text-ink-500">8 vaccinations · 4 CPN · 2 PF</div>
+          <!-- segmented mini bar -->
+          <div class="mt-3 flex h-2 rounded-full overflow-hidden bg-ink-100">
+            <span class="bg-mint-600" style="width:57%"></span>
+            <span class="bg-mint-400" style="width:28%"></span>
+            <span class="bg-mint-200" style="width:15%"></span>
+          </div>
+          <div class="flex justify-between text-[10px] text-ink-500 mt-1.5"><span>Vacc.</span><span>CPN</span><span>PF</span></div>
+        </div>
+
+        <!-- KPI 3 -->
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-amber-100 grid place-items-center text-amber-700">
+                <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+              </div>
+              <div class="text-[12px] text-ink-600 font-medium">Vaccinations en attente</div>
+            </div>
+            <button class="w-6 h-6 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
+              <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+            </button>
+          </div>
+          <div class="flex items-end gap-2 mb-1">
+            <div class="text-[30px] font-bold num tracking-tight leading-none">37</div>
+            <div class="text-[11px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded-md mb-1 inline-flex items-center gap-0.5"><svg viewBox="0 0 24 24" class="w-2.5 h-2.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m18 9-6 6-6-6"/></svg>+8</div>
+          </div>
+          <div class="text-[11.5px] text-ink-500">dont 12 enfants &gt; 2 semaines de retard</div>
+          <!-- 3-step indicator -->
+          <div class="mt-3 grid grid-cols-3 gap-1">
+            <div class="h-2 rounded-full bg-mint-500"></div>
+            <div class="h-2 rounded-full bg-amber-400"></div>
+            <div class="h-2 rounded-full bg-rose-400"></div>
+          </div>
+          <div class="flex justify-between text-[10px] text-ink-500 mt-1.5"><span>&lt; 1 sem</span><span>1–2 sem</span><span>&gt; 2 sem</span></div>
+        </div>
+
+        <!-- KPI 4 -->
+        <div class="bg-mint-700 text-white rounded-2xl p-5 relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full border-2 border-white/10"></div>
+          <div class="absolute -right-4 -bottom-4 w-32 h-32 rounded-full border-2 border-white/10"></div>
+          <div class="flex items-center justify-between mb-3 relative">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-white/15 grid place-items-center">
+                <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+              </div>
+              <div class="text-[12px] font-medium text-mint-100">Fiche mensuelle</div>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-white/15 px-1.5 py-0.5 rounded-md">Mai 2026</span>
+          </div>
+          <div class="flex items-end gap-3 relative">
+            <!-- donut -->
+            <svg viewBox="0 0 64 64" class="w-16 h-16 -mb-1 shrink-0">
+              <circle cx="32" cy="32" r="26" stroke="rgba(255,255,255,0.18)" stroke-width="8" fill="none"/>
+              <circle cx="32" cy="32" r="26" stroke="#fff" stroke-width="8" fill="none"
+                stroke-dasharray="163.36 163.36" stroke-dashoffset="42.5" stroke-linecap="round"
+                transform="rotate(-90 32 32)"/>
+            </svg>
+            <div>
+              <div class="text-[32px] font-bold num tracking-tight leading-none">74<span class="text-[18px] text-mint-200">%</span></div>
+              <div class="text-[11.5px] text-mint-100 mt-1">complétée · 3 sections restantes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ MIDDLE ROW: AREA CHART + CALENDAR ═══ -->
+      <div class="grid grid-cols-3 gap-5">
+        <!-- area chart -->
+        <div class="col-span-2 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-[15px] font-bold text-ink-900">Performance par programme</h3>
+              <div class="flex items-baseline gap-2 mt-1.5">
+                <span class="text-[26px] font-bold num tracking-tight">86,75<span class="text-[18px] text-ink-500">%</span></span>
+                <span class="text-[11.5px] font-bold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md">+2,06%</span>
+                <span class="text-[12px] text-ink-500">moyenne 12 mois</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <!-- segmented filter -->
+              <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200">
+                <button class="px-2.5 py-1 rounded-lg text-[11.5px] font-semibold text-ink-500">Vaccination</button>
+                <button class="px-2.5 py-1 rounded-lg text-[11.5px] font-semibold bg-white text-ink-900 shadow-sm">Tous</button>
+                <button class="px-2.5 py-1 rounded-lg text-[11.5px] font-semibold text-ink-500">CPN</button>
+                <button class="px-2.5 py-1 rounded-lg text-[11.5px] font-semibold text-ink-500">PF</button>
+              </div>
+              <button class="h-8 px-2.5 rounded-xl border border-ink-200 text-[11.5px] font-semibold text-ink-700 flex items-center gap-1.5 hover:bg-ink-50">
+                12 derniers mois
+                <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- legend -->
+          <div class="flex items-center gap-4 text-[11.5px] text-ink-600 mb-2">
+            <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-mint-600"></span>Vaccination</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-mint-300"></span>CPN</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-ink-300"></span>Planning familial</span>
+          </div>
+
+          <!-- SVG area chart -->
+          <div class="relative">
+            <svg viewBox="0 0 720 240" class="w-full h-[240px]">
+              <defs>
+                <linearGradient id="aV" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#3A8C61" stop-opacity="0.32"/>
+                  <stop offset="1" stop-color="#3A8C61" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="aC" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#9CD2B2" stop-opacity="0.4"/>
+                  <stop offset="1" stop-color="#9CD2B2" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+
+              <!-- grid -->
+              <g stroke="#EEF2F0" stroke-width="1">
+                <line x1="40" y1="40" x2="700" y2="40"/>
+                <line x1="40" y1="90" x2="700" y2="90"/>
+                <line x1="40" y1="140" x2="700" y2="140"/>
+                <line x1="40" y1="190" x2="700" y2="190"/>
+              </g>
+              <!-- y labels -->
+              <g fill="#94A09A" font-size="10" font-family="JetBrains Mono">
+                <text x="32" y="44" text-anchor="end">100</text>
+                <text x="32" y="94" text-anchor="end">80</text>
+                <text x="32" y="144" text-anchor="end">60</text>
+                <text x="32" y="194" text-anchor="end">40</text>
+              </g>
+
+              <!-- CPN area (back) -->
+              <path d="M40,150 L95,140 L150,148 L205,132 L260,140 L315,118 L370,125 L425,108 L480,115 L535,98 L590,105 L645,90 L700,100 L700,190 L40,190 Z" fill="url(#aC)"/>
+              <path d="M40,150 L95,140 L150,148 L205,132 L260,140 L315,118 L370,125 L425,108 L480,115 L535,98 L590,105 L645,90 L700,100" fill="none" stroke="#6FBE8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <!-- Vaccination area (front) -->
+              <path d="M40,110 L95,98 L150,108 L205,82 L260,92 L315,68 L370,78 L425,55 L480,72 L535,42 L590,58 L645,32 L700,48 L700,190 L40,190 Z" fill="url(#aV)"/>
+              <path d="M40,110 L95,98 L150,108 L205,82 L260,92 L315,68 L370,78 L425,55 L480,72 L535,42 L590,58 L645,32 L700,48" fill="none" stroke="#3A8C61" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <!-- focus point + tooltip -->
+              <line x1="535" y1="40" x2="535" y2="200" stroke="#3A8C61" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+              <circle cx="535" cy="42" r="4" fill="#fff" stroke="#2D6F4D" stroke-width="2"/>
+              <circle cx="535" cy="98" r="3.5" fill="#fff" stroke="#6FBE8E" stroke-width="2"/>
+
+              <!-- x labels -->
+              <g fill="#94A09A" font-size="10.5" font-family="JetBrains Mono" text-anchor="middle">
+                <text x="40" y="218">Juin</text>
+                <text x="95" y="218">Juil</text>
+                <text x="150" y="218">Août</text>
+                <text x="205" y="218">Sept</text>
+                <text x="260" y="218">Oct</text>
+                <text x="315" y="218">Nov</text>
+                <text x="370" y="218">Déc</text>
+                <text x="425" y="218">Janv</text>
+                <text x="480" y="218">Févr</text>
+                <text x="535" y="218" font-weight="700" fill="#0F1A14">Mars</text>
+                <text x="590" y="218">Avr</text>
+                <text x="645" y="218">Mai</text>
+                <text x="700" y="218" fill="#C2CAC6">Juin</text>
+              </g>
+            </svg>
+
+            <!-- floating tooltip -->
+            <div class="absolute" style="left: calc(74% - 70px); top: 8px;">
+              <div class="bg-ink-900 text-white rounded-xl px-3 py-2 shadow-pop text-[11px] min-w-[140px]">
+                <div class="text-ink-300 mb-1 mono">MARS 2026</div>
+                <div class="flex items-center justify-between gap-3 py-0.5">
+                  <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-mint-400"></span>Vaccination</span>
+                  <span class="font-semibold num">94,2%</span>
+                </div>
+                <div class="flex items-center justify-between gap-3 py-0.5">
+                  <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-mint-200"></span>CPN</span>
+                  <span class="font-semibold num">82,5%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- calendar -->
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="text-[11px] uppercase tracking-[0.14em] text-ink-500 font-semibold">Calendrier</div>
+              <h3 class="text-[15px] font-bold text-ink-900 mt-0.5">Mai 2026</h3>
+            </div>
+            <div class="flex items-center gap-1">
+              <button class="w-8 h-8 rounded-lg border border-ink-200 grid place-items-center hover:bg-ink-50">
+                <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
+              <button class="w-8 h-8 rounded-lg border border-ink-200 grid place-items-center hover:bg-ink-50">
+                <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- weekday header -->
+          <div class="grid grid-cols-7 gap-1 text-[10px] uppercase tracking-wider text-ink-400 font-semibold text-center mb-2">
+            <div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div><div>D</div>
+          </div>
+
+          <!-- days -->
+          <div class="grid grid-cols-7 gap-1 text-center text-[12px] num">
+            <!-- prev month -->
+            <div class="aspect-square grid place-items-center text-ink-300">28</div>
+            <div class="aspect-square grid place-items-center text-ink-300">29</div>
+            <div class="aspect-square grid place-items-center text-ink-300">30</div>
+            <!-- this month -->
+            <div class="aspect-square grid place-items-center text-ink-700 relative">1<span class="absolute bottom-1 w-1 h-1 rounded-full bg-mint-400"></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700">2</div>
+            <div class="aspect-square grid place-items-center text-ink-300">3</div>
+            <div class="aspect-square grid place-items-center text-ink-300">4</div>
+
+            <div class="aspect-square grid place-items-center text-ink-700 relative">5<span class="absolute bottom-1 flex gap-0.5"><span class="w-1 h-1 rounded-full bg-mint-500"></span><span class="w-1 h-1 rounded-full bg-amber-400"></span></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">6<span class="absolute bottom-1 w-1 h-1 rounded-full bg-mint-500"></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">7<span class="absolute bottom-1 flex gap-0.5"><span class="w-1 h-1 rounded-full bg-mint-500"></span><span class="w-1 h-1 rounded-full bg-mint-300"></span></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700">8</div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">9<span class="absolute bottom-1 w-1 h-1 rounded-full bg-mint-300"></span></div>
+            <div class="aspect-square grid place-items-center text-ink-300">10</div>
+            <div class="aspect-square grid place-items-center text-ink-300">11</div>
+
+            <div class="aspect-square grid place-items-center text-ink-700 relative">12<span class="absolute bottom-1 flex gap-0.5"><span class="w-1 h-1 rounded-full bg-mint-600"></span><span class="w-1 h-1 rounded-full bg-mint-600"></span><span class="w-1 h-1 rounded-full bg-mint-600"></span></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">13<span class="absolute bottom-1 w-1 h-1 rounded-full bg-mint-500"></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">14<span class="absolute bottom-1 flex gap-0.5"><span class="w-1 h-1 rounded-full bg-amber-400"></span><span class="w-1 h-1 rounded-full bg-mint-300"></span></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">15<span class="absolute bottom-1 w-1 h-1 rounded-full bg-mint-500"></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">16<span class="absolute bottom-1 flex gap-0.5"><span class="w-1 h-1 rounded-full bg-mint-600"></span><span class="w-1 h-1 rounded-full bg-mint-600"></span></span></div>
+            <div class="aspect-square grid place-items-center text-ink-300">17</div>
+            <div class="aspect-square grid place-items-center text-ink-300">18</div>
+
+            <div class="aspect-square grid place-items-center text-ink-700 relative">19<span class="absolute bottom-1 w-1 h-1 rounded-full bg-mint-300"></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">20<span class="absolute bottom-1 flex gap-0.5"><span class="w-1 h-1 rounded-full bg-mint-600"></span><span class="w-1 h-1 rounded-full bg-mint-600"></span></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">21<span class="absolute bottom-1 flex gap-0.5"><span class="w-1 h-1 rounded-full bg-mint-600"></span><span class="w-1 h-1 rounded-full bg-mint-600"></span><span class="w-1 h-1 rounded-full bg-mint-600"></span><span class="w-1 h-1 rounded-full bg-mint-600"></span></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">22<span class="absolute bottom-1 flex gap-0.5"><span class="w-1 h-1 rounded-full bg-amber-400"></span><span class="w-1 h-1 rounded-full bg-mint-500"></span></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">23<span class="absolute bottom-1 w-1 h-1 rounded-full bg-mint-500"></span></div>
+            <div class="aspect-square grid place-items-center text-ink-300">24</div>
+            <!-- TODAY -->
+            <div class="aspect-square grid place-items-center relative">
+              <span class="absolute inset-0.5 rounded-lg bg-mint-700"></span>
+              <span class="relative text-white font-bold">25</span>
+              <span class="absolute bottom-1.5 flex gap-0.5 z-10"><span class="w-1 h-1 rounded-full bg-white"></span><span class="w-1 h-1 rounded-full bg-white"></span><span class="w-1 h-1 rounded-full bg-white"></span></span>
+            </div>
+
+            <div class="aspect-square grid place-items-center text-ink-700 relative">26<span class="absolute bottom-1 flex gap-0.5"><span class="w-1 h-1 rounded-full bg-mint-600"></span><span class="w-1 h-1 rounded-full bg-mint-600"></span></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">27<span class="absolute bottom-1 w-1 h-1 rounded-full bg-mint-500"></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">28<span class="absolute bottom-1 flex gap-0.5"><span class="w-1 h-1 rounded-full bg-rose-400"></span><span class="w-1 h-1 rounded-full bg-mint-500"></span></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">29<span class="absolute bottom-1 w-1 h-1 rounded-full bg-mint-300"></span></div>
+            <div class="aspect-square grid place-items-center text-ink-700 relative">30<span class="absolute bottom-1 flex gap-0.5"><span class="w-1 h-1 rounded-full bg-mint-600"></span><span class="w-1 h-1 rounded-full bg-mint-600"></span><span class="w-1 h-1 rounded-full bg-mint-600"></span></span></div>
+            <div class="aspect-square grid place-items-center text-ink-300">31</div>
+            <div class="aspect-square grid place-items-center text-ink-300">1</div>
+          </div>
+
+          <!-- legend -->
+          <div class="mt-4 pt-3 border-t border-ink-100 grid grid-cols-2 gap-y-2 gap-x-3 text-[10.5px] text-ink-600">
+            <span class="inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-600"></span>Forte densité</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-300"></span>Faible densité</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Suivi à faire</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Retard / alerte</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ BOTTOM ROW: PROGRAMS BARS + APPOINTMENTS + ALERTS ═══ -->
+      <div class="grid grid-cols-12 gap-5">
+
+        <!-- Programs bars -->
+        <div class="col-span-5 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-[15px] font-bold text-ink-900">Programmes — performance ce mois</h3>
+              <p class="text-[11.5px] text-ink-500 mt-0.5">% atteint vs. cible mensuelle · comparé à avril 2026</p>
+            </div>
+            <button class="text-[11.5px] font-semibold text-mint-700 hover:underline">Voir tout</button>
+          </div>
+
+          <div class="space-y-3.5">
+            <!-- row template -->
+            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+              <div class="font-semibold text-ink-800">Vaccination</div>
+              <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-600 rounded-full" style="width:94%"></div></div>
+              <div class="num font-semibold text-right">94 %</div>
+              <div class="text-[11px] font-bold text-mint-700 text-right">+3</div>
+            </div>
+            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+              <div class="font-semibold text-ink-800">CPN</div>
+              <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-600 rounded-full" style="width:88%"></div></div>
+              <div class="num font-semibold text-right">88 %</div>
+              <div class="text-[11px] font-bold text-mint-700 text-right">+1</div>
+            </div>
+            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+              <div class="font-semibold text-ink-800">Planning familial</div>
+              <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-500 rounded-full" style="width:82%"></div></div>
+              <div class="num font-semibold text-right">82 %</div>
+              <div class="text-[11px] font-bold text-mint-700 text-right">+5</div>
+            </div>
+            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+              <div class="font-semibold text-ink-800">CPoN</div>
+              <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-500 rounded-full" style="width:79%"></div></div>
+              <div class="num font-semibold text-right">79 %</div>
+              <div class="text-[11px] font-bold text-mint-700 text-right">+2</div>
+            </div>
+            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+              <div class="font-semibold text-ink-800">CME &lt;5 ans</div>
+              <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-500 rounded-full" style="width:76%"></div></div>
+              <div class="num font-semibold text-right">76 %</div>
+              <div class="text-[11px] font-bold text-mint-700 text-right">+4</div>
+            </div>
+            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+              <div class="font-semibold text-ink-800">Nutrition</div>
+              <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-400 rounded-full" style="width:71%"></div></div>
+              <div class="num font-semibold text-right">71 %</div>
+              <div class="text-[11px] font-bold text-ink-500 text-right">0</div>
+            </div>
+            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+              <div class="font-semibold text-ink-800">SMC</div>
+              <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-400 rounded-full" style="width:68%"></div></div>
+              <div class="num font-semibold text-right">68 %</div>
+              <div class="text-[11px] font-bold text-mint-700 text-right">+2</div>
+            </div>
+            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+              <div class="font-semibold text-ink-800">DPCSCU</div>
+              <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:61%"></div></div>
+              <div class="num font-semibold text-right">61 %</div>
+              <div class="text-[11px] font-bold text-rose-600 text-right">−4</div>
+            </div>
+            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+              <div class="font-semibold text-ink-800">SC</div>
+              <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:58%"></div></div>
+              <div class="num font-semibold text-right">58 %</div>
+              <div class="text-[11px] font-bold text-rose-600 text-right">−2</div>
+            </div>
+            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+              <div class="font-semibold text-ink-800">IST / SIDA</div>
+              <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-rose-400 rounded-full" style="width:42%"></div></div>
+              <div class="num font-semibold text-right">42 %</div>
+              <div class="text-[11px] font-bold text-rose-600 text-right">−7</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming appointments -->
+        <div class="col-span-4 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-[15px] font-bold text-ink-900">Prochains rendez-vous</h3>
+              <p class="text-[11.5px] text-ink-500 mt-0.5">Aujourd'hui — Lundi 25 mai</p>
+            </div>
+            <button class="text-[11.5px] font-semibold text-mint-700 hover:underline">Tout voir (14)</button>
+          </div>
+
+          <ul class="divide-y divide-ink-100">
+            <!-- appointment 1 -->
+            <li class="py-3 flex items-center gap-3">
+              <div class="w-10 text-center shrink-0">
+                <div class="text-[11px] text-ink-500 mono">09:00</div>
+                <div class="text-[10px] text-ink-400 mono">15 min</div>
+              </div>
+              <div class="w-1 h-9 rounded-full bg-mint-600 shrink-0"></div>
+              <div class="w-8 h-8 rounded-full bg-mint-100 grid place-items-center text-mint-800 font-bold text-[11px] shrink-0">YA</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[13px] font-semibold text-ink-900 truncate">Youssef Alami <span class="text-ink-400 font-normal text-[11.5px] num">· 4 mois</span></div>
+                <div class="text-[11.5px] text-ink-500 truncate">Vaccination — Penta 2 + VPO 2</div>
+              </div>
+              <span class="text-[10.5px] font-bold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md">Confirmé</span>
+            </li>
+            <li class="py-3 flex items-center gap-3">
+              <div class="w-10 text-center shrink-0"><div class="text-[11px] text-ink-500 mono">09:30</div><div class="text-[10px] text-ink-400 mono">20 min</div></div>
+              <div class="w-1 h-9 rounded-full bg-mint-400 shrink-0"></div>
+              <div class="w-8 h-8 rounded-full bg-mint-100 grid place-items-center text-mint-800 font-bold text-[11px] shrink-0">AB</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[13px] font-semibold text-ink-900 truncate">Aicha Benali <span class="text-ink-400 font-normal text-[11.5px] num">· 28 ans</span></div>
+                <div class="text-[11.5px] text-ink-500 truncate">CPN 2 — 24ᵉ semaine d'aménorrhée</div>
+              </div>
+              <span class="text-[10.5px] font-bold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md">Confirmé</span>
+            </li>
+            <li class="py-3 flex items-center gap-3">
+              <div class="w-10 text-center shrink-0"><div class="text-[11px] text-ink-500 mono">10:15</div><div class="text-[10px] text-ink-400 mono">15 min</div></div>
+              <div class="w-1 h-9 rounded-full bg-mint-600 shrink-0"></div>
+              <div class="w-8 h-8 rounded-full bg-mint-100 grid place-items-center text-mint-800 font-bold text-[11px] shrink-0">SE</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[13px] font-semibold text-ink-900 truncate">Salma El Fassi <span class="text-ink-400 font-normal text-[11.5px] num">· 11 mois</span></div>
+                <div class="text-[11.5px] text-ink-500 truncate">Vaccination — VAR 1 + Hep.B rappel</div>
+              </div>
+              <span class="text-[10.5px] font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded-md">En attente</span>
+            </li>
+            <li class="py-3 flex items-center gap-3">
+              <div class="w-10 text-center shrink-0"><div class="text-[11px] text-ink-500 mono">11:00</div><div class="text-[10px] text-ink-400 mono">30 min</div></div>
+              <div class="w-1 h-9 rounded-full bg-mint-300 shrink-0"></div>
+              <div class="w-8 h-8 rounded-full bg-mint-100 grid place-items-center text-mint-800 font-bold text-[11px] shrink-0">KB</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[13px] font-semibold text-ink-900 truncate">Khadija Bennani <span class="text-ink-400 font-normal text-[11.5px] num">· 34 ans</span></div>
+                <div class="text-[11.5px] text-ink-500 truncate">Planning familial — pose DIU</div>
+              </div>
+              <span class="text-[10.5px] font-bold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md">Confirmé</span>
+            </li>
+            <li class="py-3 flex items-center gap-3">
+              <div class="w-10 text-center shrink-0"><div class="text-[11px] text-ink-500 mono">11:45</div><div class="text-[10px] text-ink-400 mono">15 min</div></div>
+              <div class="w-1 h-9 rounded-full bg-mint-600 shrink-0"></div>
+              <div class="w-8 h-8 rounded-full bg-mint-100 grid place-items-center text-mint-800 font-bold text-[11px] shrink-0">MT</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[13px] font-semibold text-ink-900 truncate">Mohamed Tazi <span class="text-ink-400 font-normal text-[11.5px] num">· 2 mois</span></div>
+                <div class="text-[11.5px] text-ink-500 truncate">Vaccination — BCG (rattrapage) + Penta 1</div>
+              </div>
+              <span class="text-[10.5px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded-md">Rattrapage</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Alerts -->
+        <div class="col-span-3 bg-white rounded-2xl border border-ink-200 shadow-card p-5 flex flex-col">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-[15px] font-bold text-ink-900 flex items-center gap-2">
+                Alertes
+                <span class="text-[10.5px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded-md num">7</span>
+              </h3>
+              <p class="text-[11.5px] text-ink-500 mt-0.5">À traiter cette semaine</p>
+            </div>
+            <button class="w-7 h-7 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
+              <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+            </button>
+          </div>
+
+          <ul class="space-y-2.5 flex-1">
+            <li class="rounded-xl border border-ink-200 p-3">
+              <div class="flex items-start gap-2">
+                <div class="w-7 h-7 rounded-lg bg-rose-100 grid place-items-center text-rose-700 shrink-0 mt-0.5">
+                  <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-[12.5px] font-semibold text-ink-900">12 vaccinations en retard</div>
+                  <div class="text-[11px] text-ink-500 mt-0.5">Penta 3 — &gt; 14 jours après la date prévue</div>
+                </div>
+              </div>
+              <button class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Voir la liste →</button>
+            </li>
+
+            <li class="rounded-xl border border-amber-200 bg-amber-50/50 p-3">
+              <div class="flex items-start gap-2">
+                <div class="w-7 h-7 rounded-lg bg-amber-100 grid place-items-center text-amber-700 shrink-0 mt-0.5">
+                  <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-[12.5px] font-semibold text-ink-900">Fiche mensuelle — 3 sections</div>
+                  <div class="text-[11px] text-ink-500 mt-0.5">Soumission avant le 31/05/2026</div>
+                </div>
+              </div>
+              <button class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Compléter →</button>
+            </li>
+
+            <li class="rounded-xl border border-ink-200 p-3">
+              <div class="flex items-start gap-2">
+                <div class="w-7 h-7 rounded-lg bg-mint-100 grid place-items-center text-mint-700 shrink-0 mt-0.5">
+                  <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-[12.5px] font-semibold text-ink-900">5 SMS rappel CPN à envoyer</div>
+                  <div class="text-[11px] text-ink-500 mt-0.5">Femmes enceintes — RDV semaine prochaine</div>
+                </div>
+              </div>
+              <button class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Envoyer maintenant →</button>
+            </li>
+
+            <li class="rounded-xl border border-ink-200 p-3">
+              <div class="flex items-start gap-2">
+                <div class="w-7 h-7 rounded-lg bg-ink-100 grid place-items-center text-ink-700 shrink-0 mt-0.5">
+                  <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-[12.5px] font-semibold text-ink-900">Stock BCG — bas</div>
+                  <div class="text-[11px] text-ink-500 mt-0.5">11 doses restantes (≈ 4 jours)</div>
+                </div>
+              </div>
+              <button class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Commander →</button>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- footer -->
+      <div class="flex items-center justify-between pt-2 pb-4 text-[11px] text-ink-500">
+        <div>Sehha © 2026 · Plateforme de gestion sanitaire de proximité</div>
+        <div class="flex items-center gap-4">
+          <a class="hover:text-ink-700" href="#">Aide</a>
+          <a class="hover:text-ink-700" href="#">Confidentialité</a>
+          <a class="hover:text-ink-700" href="#">Conditions</a>
+          <span class="mono text-ink-400">v 1.4.2 · CSU-1 Khémisset</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="app/chrome.js"></script>
+</body>
+</html>

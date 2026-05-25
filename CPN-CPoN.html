@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Sehha — CPN / CPoN</title>
+<meta name="viewport" content="width=1440" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="app/tailwind-config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app/styles.css">
+</head>
+<body class="min-w-[1440px]">
+
+<div class="flex min-h-screen">
+  <div id="chrome"></div>
+
+  <main id="main" class="flex-1 min-w-0">
+    <div class="px-7 py-6 space-y-6">
+
+      <!-- header -->
+      <div class="flex items-end justify-between">
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.14em] text-ink-500 font-semibold mb-1.5">Santé maternelle</div>
+          <h1 class="text-[26px] font-bold tracking-tight text-ink-900 leading-tight">CPN — Consultation prénatale</h1>
+          <p class="text-[13.5px] text-ink-600 mt-1">218 femmes enceintes suivies · <span class="font-semibold text-rose-700">14 grossesses à risque</span> · 9 accouchements ce mois</p>
+        </div>
+        <div class="flex items-center gap-2" data-tab-group>
+          <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+            <button class="seg-btn is-active" data-tab="cpn">CPN (prénatal)</button>
+            <button class="seg-btn" data-tab="cpon">CPoN (postnatal)</button>
+          </div>
+          <button data-toast="Nouvelle consultation" class="h-10 px-3.5 rounded-xl bg-mint-700 text-white text-[12.5px] font-semibold flex items-center gap-2 hover:bg-mint-800">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            Nouvelle saisie
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI cards -->
+      <div class="grid grid-cols-4 gap-5">
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="text-[12px] text-ink-600 font-medium mb-2">CPN 1 — 1er trimestre</div>
+          <div class="flex items-end gap-2"><div class="text-[28px] font-bold num leading-none">68</div><span class="text-[11px] font-bold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md mb-1">+5</span></div>
+          <div class="text-[11px] text-ink-500 mt-2">précoces (avant 14 SA) : 52</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="text-[12px] text-ink-600 font-medium mb-2">CPN 2 — 2e trimestre</div>
+          <div class="flex items-end gap-2"><div class="text-[28px] font-bold num leading-none">62</div><span class="text-[11px] font-bold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md mb-1">+3</span></div>
+          <div class="text-[11px] text-ink-500 mt-2">taux de présence 91 %</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="text-[12px] text-ink-600 font-medium mb-2">CPN 3 + 4 — 3e trimestre</div>
+          <div class="flex items-end gap-2"><div class="text-[28px] font-bold num leading-none">88</div><span class="text-[11px] font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded-md mb-1">−2</span></div>
+          <div class="text-[11px] text-ink-500 mt-2">14 reprogrammées</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="text-[12px] text-ink-600 font-medium mb-2">Grossesses à risque</div>
+          <div class="flex items-end gap-2"><div class="text-[28px] font-bold num leading-none text-rose-700">14</div><span class="text-[11px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded-md mb-1">+2</span></div>
+          <div class="text-[11px] text-ink-500 mt-2">référées vers le CHP</div>
+        </div>
+      </div>
+
+      <!-- Funnel + Calendar -->
+      <div class="grid grid-cols-12 gap-5">
+        <!-- Funnel -->
+        <div class="col-span-7 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-[15px] font-bold text-ink-900">Parcours CPN — cohorte 2025/26</h3>
+              <p class="text-[11.5px] text-ink-500 mt-0.5">Continuité du suivi prénatal sur les 4 visites</p>
+            </div>
+            <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+              <button class="seg-btn is-active">Cohorte</button>
+              <button class="seg-btn">12 mois</button>
+            </div>
+          </div>
+
+          <svg viewBox="0 0 640 260" class="w-full h-[260px]">
+            <defs>
+              <clipPath id="trapClip"><polygon points="40,30 600,60 600,200 40,230"/></clipPath>
+            </defs>
+            <!-- trapezoid funnel as proportional segments -->
+            <g>
+              <!-- Total 100 -->
+              <rect x="40" y="30" width="140" height="200" fill="#2D6F4D" rx="4"/>
+              <rect x="190" y="48" width="140" height="164" fill="#3A8C61" rx="4"/>
+              <rect x="340" y="68" width="140" height="124" fill="#4DA876" rx="4"/>
+              <rect x="490" y="86" width="120" height="88" fill="#6FBE8E" rx="4"/>
+            </g>
+            <g font-family="Plus Jakarta Sans">
+              <text x="110" y="120" text-anchor="middle" fill="#fff" font-size="36" font-weight="700">196</text>
+              <text x="110" y="148" text-anchor="middle" fill="#C7E6D2" font-size="12">CPN 1 · 100 %</text>
+
+              <text x="260" y="125" text-anchor="middle" fill="#fff" font-size="30" font-weight="700">178</text>
+              <text x="260" y="148" text-anchor="middle" fill="#C7E6D2" font-size="12">CPN 2 · 91 %</text>
+
+              <text x="410" y="125" text-anchor="middle" fill="#fff" font-size="26" font-weight="700">152</text>
+              <text x="410" y="148" text-anchor="middle" fill="#E2F2E7" font-size="12">CPN 3 · 78 %</text>
+
+              <text x="550" y="125" text-anchor="middle" fill="#0F1A14" font-size="22" font-weight="700">118</text>
+              <text x="550" y="148" text-anchor="middle" fill="#143324" font-size="11">CPN 4 · 60 %</text>
+            </g>
+            <!-- drop arrows -->
+            <g fill="#94A09A" font-family="JetBrains Mono" font-size="10">
+              <text x="185" y="20">−9 %</text>
+              <text x="335" y="20">−13 %</text>
+              <text x="485" y="20">−18 %</text>
+            </g>
+          </svg>
+
+          <div class="mt-3 grid grid-cols-3 gap-3 pt-4 border-t border-ink-100">
+            <div>
+              <div class="text-[11px] text-ink-500">Démarrage précoce (CPN1 &lt; 14 SA)</div>
+              <div class="text-[18px] font-bold num">76 %</div>
+            </div>
+            <div>
+              <div class="text-[11px] text-ink-500">Couverture 4 CPN</div>
+              <div class="text-[18px] font-bold num">60 %</div>
+            </div>
+            <div>
+              <div class="text-[11px] text-ink-500">Référence CHP</div>
+              <div class="text-[18px] font-bold num">14 cas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini calendar of upcoming -->
+        <div class="col-span-5 bg-white rounded-2xl border border-ink-200 shadow-card overflow-hidden flex flex-col">
+          <div class="flex items-center justify-between px-5 py-4 border-b border-ink-100">
+            <div>
+              <h3 class="text-[15px] font-bold text-ink-900">Consultations à venir</h3>
+              <p class="text-[11.5px] text-ink-500 mt-0.5">7 prochains jours</p>
+            </div>
+            <a href="Rendez-vous.html" class="text-[11.5px] font-semibold text-mint-700 hover:underline">Calendrier complet →</a>
+          </div>
+
+          <ul class="divide-y divide-ink-100 flex-1 overflow-y-auto" id="cpnList"></ul>
+        </div>
+      </div>
+
+      <!-- High-risk list -->
+      <div class="bg-white rounded-2xl border border-ink-200 shadow-card overflow-hidden">
+        <div class="flex items-center justify-between px-5 py-4 border-b border-ink-100">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 grid place-items-center">
+              <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-[15px] font-bold text-ink-900">Grossesses à risque</h3>
+              <p class="text-[11.5px] text-ink-500 mt-0.5">Surveillance renforcée — protocole MSI 2024</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+              <button class="seg-btn is-active">Tous risques</button>
+              <button class="seg-btn">HTA</button>
+              <button class="seg-btn">Diabète</button>
+              <button class="seg-btn">Antéc.</button>
+            </div>
+          </div>
+        </div>
+
+        <table class="w-full text-[12.5px]">
+          <thead class="text-[10.5px] uppercase tracking-wider text-ink-500 bg-ink-50/60">
+            <tr>
+              <th class="text-left font-semibold px-5 py-2.5">Patiente</th>
+              <th class="text-left font-semibold px-3 py-2.5">Âge</th>
+              <th class="text-left font-semibold px-3 py-2.5">SA</th>
+              <th class="text-left font-semibold px-3 py-2.5">Visite</th>
+              <th class="text-left font-semibold px-3 py-2.5">Facteur de risque</th>
+              <th class="text-left font-semibold px-3 py-2.5">Référence</th>
+              <th class="text-left font-semibold px-3 py-2.5">Prochain RDV</th>
+              <th class="text-right font-semibold px-5 py-2.5"></th>
+            </tr>
+          </thead>
+          <tbody id="riskBody" class="divide-y divide-ink-100"></tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="app/data.js"></script>
+<script src="app/chrome.js"></script>
+<script>
+  Chrome.mount({ active: 'cpn', breadcrumb: ['CSU Moussa Bnou Nouceir', 'Programmes', 'CPN / CPoN'] });
+
+  (function () {
+    const list = document.getElementById('cpnList');
+    list.innerHTML = SEHHA.women.map((w, i) => `
+      <li class="px-5 py-3 flex items-center gap-3 hover:bg-ink-50/60 cursor-pointer" data-toast="Dossier ${w.name} ouvert">
+        <div class="w-12 text-center shrink-0">
+          <div class="text-[11px] font-bold text-mint-700 num">${['25','27','28','29','30'][i]}/05</div>
+          <div class="text-[10px] text-ink-400">mai</div>
+        </div>
+        <div class="w-1 h-9 rounded-full ${w.risk === 'Élevé' ? 'bg-rose-400' : 'bg-mint-500'} shrink-0"></div>
+        <div class="w-8 h-8 rounded-full bg-mint-100 grid place-items-center text-mint-800 font-bold text-[11px] shrink-0">${w.name.split(' ').map(x=>x[0]).slice(0,2).join('')}</div>
+        <div class="flex-1 min-w-0">
+          <div class="text-[13px] font-semibold text-ink-900 truncate">${w.name} <span class="text-ink-400 font-normal text-[11.5px] num">· ${w.age} ans</span></div>
+          <div class="text-[11.5px] text-ink-500 truncate">${w.visit} · ${w.sa}</div>
+        </div>
+        ${w.risk === 'Élevé' ? '<span class="text-[10.5px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded-md">Risque</span>' : '<span class="text-[10.5px] font-bold text-mint-700 bg-mint-100 px-1.5 py-0.5 rounded-md">Normal</span>'}
+      </li>
+    `).join('');
+  })();
+
+  (function () {
+    const tbody = document.getElementById('riskBody');
+    const risks = [
+      { name:'Hanane Lahlou',     age:34, sa:'32 SA', visit:'CPN 3', factor:'HTA gravidique',         ref:'CHP Khémisset', next:'27/05/2026' },
+      { name:'Fatima Zahra Ouahbi',age:30, sa:'36 SA', visit:'CPN 4', factor:'Diabète gestationnel',  ref:'CHP Khémisset', next:'29/05/2026' },
+      { name:'Saadia Bouazza',    age:38, sa:'28 SA', visit:'CPN 3', factor:'Antéc. césarienne × 2',  ref:'Maternité Rabat', next:'30/05/2026' },
+      { name:'Latifa Tahiri',     age:41, sa:'18 SA', visit:'CPN 1', factor:'Âge maternel > 40 ans',  ref:'CHP Khémisset', next:'02/06/2026' },
+      { name:'Khadija Mernissi',  age:26, sa:'34 SA', visit:'CPN 3', factor:'Anémie sévère (Hb 7,2)', ref:'CHP Khémisset', next:'28/05/2026' },
+      { name:'Asmae El Kabbaj',   age:32, sa:'29 SA', visit:'CPN 3', factor:'Pré-éclampsie modérée',  ref:'CHU Rabat',     next:'26/05/2026' },
+    ];
+    tbody.innerHTML = risks.map(r => `
+      <tr class="hover:bg-ink-50/60">
+        <td class="px-5 py-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-mint-100 grid place-items-center text-mint-800 font-bold text-[11px]">${r.name.split(' ').map(x=>x[0]).slice(0,2).join('')}</div>
+            <div class="font-semibold text-ink-900">${r.name}</div>
+          </div>
+        </td>
+        <td class="px-3 py-3 num">${r.age}</td>
+        <td class="px-3 py-3 num">${r.sa}</td>
+        <td class="px-3 py-3 font-semibold">${r.visit}</td>
+        <td class="px-3 py-3 text-rose-700 font-semibold">${r.factor}</td>
+        <td class="px-3 py-3 text-ink-600">${r.ref}</td>
+        <td class="px-3 py-3 num">${r.next}</td>
+        <td class="px-5 py-3 text-right"><a href="Patient.html" class="text-[11.5px] font-semibold text-mint-700 hover:underline">Voir dossier →</a></td>
+      </tr>
+    `).join('');
+  })();
+</script>
+
+</body>
+</html>

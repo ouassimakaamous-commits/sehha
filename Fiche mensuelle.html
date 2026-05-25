@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Sehha — Fiche mensuelle</title>
+<meta name="viewport" content="width=1440" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="app/tailwind-config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app/styles.css">
+<style>
+  .fm-row td { border-bottom: 1px solid #EEF2F0; }
+  .fm-row:last-child td { border-bottom: none; }
+  .fm-num input { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="min-w-[1440px]">
+
+<div class="flex min-h-screen">
+  <div id="chrome"></div>
+
+  <main id="main" class="flex-1 min-w-0">
+    <div class="px-7 py-6 space-y-6">
+
+      <!-- header -->
+      <div class="flex items-end justify-between">
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.14em] text-ink-500 font-semibold mb-1.5">Reporting</div>
+          <h1 class="text-[26px] font-bold tracking-tight text-ink-900 leading-tight">Fiche mensuelle d'activités</h1>
+          <p class="text-[13.5px] text-ink-600 mt-1">Mai 2026 · CSU Moussa Bnou Nouceir · à soumettre avant le <span class="font-semibold text-amber-700">31/05/2026</span></p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button data-toast="Brouillon enregistré" class="h-10 px-3.5 rounded-xl border border-ink-200 text-[12.5px] font-semibold text-ink-700 flex items-center gap-2 hover:bg-ink-50 bg-white">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>
+            Enregistrer brouillon
+          </button>
+          <button data-toast="Export PDF format officiel généré" class="h-10 px-3.5 rounded-xl border border-ink-200 text-[12.5px] font-semibold text-ink-700 flex items-center gap-2 hover:bg-ink-50 bg-white">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            Export PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- meta + tabs + body + sidebar -->
+      <div class="grid grid-cols-12 gap-5">
+
+        <!-- left: form -->
+        <div class="col-span-9 space-y-5">
+          <!-- meta panel -->
+          <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+            <div class="grid grid-cols-5 gap-4">
+              <div>
+                <label class="text-[10.5px] uppercase tracking-wider font-semibold text-ink-500">Mois</label>
+                <select class="mt-1 w-full h-9 px-3 rounded-lg border border-ink-200 text-[13px] bg-white">
+                  <option>Mai</option><option>Avril</option><option>Mars</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-[10.5px] uppercase tracking-wider font-semibold text-ink-500">Année</label>
+                <select class="mt-1 w-full h-9 px-3 rounded-lg border border-ink-200 text-[13px] bg-white">
+                  <option>2026</option><option>2025</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-[10.5px] uppercase tracking-wider font-semibold text-ink-500">Région</label>
+                <div class="mt-1 h-9 px-3 rounded-lg bg-ink-50 text-[13px] flex items-center text-ink-700 font-medium">Rabat-Salé-Kénitra</div>
+              </div>
+              <div>
+                <label class="text-[10.5px] uppercase tracking-wider font-semibold text-ink-500">Province</label>
+                <div class="mt-1 h-9 px-3 rounded-lg bg-ink-50 text-[13px] flex items-center text-ink-700 font-medium">Khémisset</div>
+              </div>
+              <div>
+                <label class="text-[10.5px] uppercase tracking-wider font-semibold text-ink-500">Établissement</label>
+                <div class="mt-1 h-9 px-3 rounded-lg bg-ink-50 text-[13px] flex items-center text-ink-700 font-medium">Moussa Bnou Nouceir · CSU-1</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- tabs panel -->
+          <div class="bg-white rounded-2xl border border-ink-200 shadow-card overflow-hidden" data-tab-group>
+            <!-- tabs -->
+            <div class="flex items-center gap-0 px-2 border-b border-ink-200 overflow-x-auto">
+              <button data-tab="pf" class="seg-btn tab-btn h-12 px-4 text-[12.5px] font-semibold text-ink-500 border-b-2 border-transparent">PF <span class="ml-1 text-[10px] text-mint-700 bg-mint-100 px-1 py-0.5 rounded-md">100%</span></button>
+              <button data-tab="cpn" class="seg-btn tab-btn h-12 px-4 text-[12.5px] font-semibold text-ink-500 border-b-2 border-transparent">CPN <span class="ml-1 text-[10px] text-mint-700 bg-mint-100 px-1 py-0.5 rounded-md">100%</span></button>
+              <button data-tab="cpon" class="seg-btn tab-btn h-12 px-4 text-[12.5px] font-semibold text-ink-500 border-b-2 border-transparent">CPoN <span class="ml-1 text-[10px] text-mint-700 bg-mint-100 px-1 py-0.5 rounded-md">100%</span></button>
+              <button data-tab="vacc" class="seg-btn tab-btn is-active h-12 px-4 text-[12.5px] font-semibold border-b-2 border-mint-600 text-ink-900">Vaccination <span class="ml-1 text-[10px] text-amber-700 bg-amber-100 px-1 py-0.5 rounded-md">68%</span></button>
+              <button data-tab="nut" class="seg-btn tab-btn h-12 px-4 text-[12.5px] font-semibold text-ink-500 border-b-2 border-transparent">Nutrition <span class="ml-1 text-[10px] text-amber-700 bg-amber-100 px-1 py-0.5 rounded-md">45%</span></button>
+              <button data-tab="dpc" class="seg-btn tab-btn h-12 px-4 text-[12.5px] font-semibold text-ink-500 border-b-2 border-transparent">DPCSCU <span class="ml-1 text-[10px] text-rose-700 bg-rose-100 px-1 py-0.5 rounded-md">0%</span></button>
+              <button data-tab="ist" class="seg-btn tab-btn h-12 px-4 text-[12.5px] font-semibold text-ink-500 border-b-2 border-transparent">IST/SIDA</button>
+              <button data-tab="cme" class="seg-btn tab-btn h-12 px-4 text-[12.5px] font-semibold text-ink-500 border-b-2 border-transparent">CME-5ans</button>
+              <button data-tab="sc" class="seg-btn tab-btn h-12 px-4 text-[12.5px] font-semibold text-ink-500 border-b-2 border-transparent">SC</button>
+              <button data-tab="smc" class="seg-btn tab-btn h-12 px-4 text-[12.5px] font-semibold text-ink-500 border-b-2 border-transparent">SMC</button>
+            </div>
+
+            <!-- VACCINATION PANEL -->
+            <div data-tab-panel="vacc" class="is-active">
+              <div class="px-5 py-4 border-b border-ink-100 flex items-center justify-between">
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider font-semibold text-ink-500">Section 1</div>
+                  <h3 class="text-[14.5px] font-bold text-ink-900">Rapport des performances · Vaccination</h3>
+                </div>
+                <div class="text-[11.5px] text-ink-500 inline-flex items-center gap-1.5"><svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-mint-600" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>Données pré-remplies depuis les saisies quotidiennes</div>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-[12.5px]">
+                  <thead class="text-[10.5px] uppercase tracking-wider text-ink-500 bg-ink-50/60">
+                    <tr>
+                      <th class="text-left font-semibold px-5 py-2.5">Antigène / Dose</th>
+                      <th class="text-right font-semibold px-3 py-2.5">Cible mensuelle</th>
+                      <th class="text-right font-semibold px-3 py-2.5">Urbain</th>
+                      <th class="text-right font-semibold px-3 py-2.5">Rural</th>
+                      <th class="text-right font-semibold px-3 py-2.5">Dont rural mobile</th>
+                      <th class="text-right font-semibold px-3 py-2.5 bg-mint-50">Ensemble</th>
+                      <th class="text-right font-semibold px-5 py-2.5">% atteint</th>
+                    </tr>
+                  </thead>
+                  <tbody id="vaccTable" class="num"></tbody>
+                </table>
+              </div>
+
+              <!-- Section 2 -->
+              <div class="px-5 py-4 border-t border-ink-200 flex items-center justify-between">
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider font-semibold text-ink-500">Section 2</div>
+                  <h3 class="text-[14.5px] font-bold text-ink-900">Stocks et pertes</h3>
+                </div>
+                <button data-toast="Stocks importés depuis le magasin" class="text-[11.5px] font-semibold text-mint-700 hover:underline">Réimporter depuis stock</button>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-[12.5px]">
+                  <thead class="text-[10.5px] uppercase tracking-wider text-ink-500 bg-ink-50/60">
+                    <tr>
+                      <th class="text-left font-semibold px-5 py-2.5">Antigène</th>
+                      <th class="text-right font-semibold px-3 py-2.5">Stock début</th>
+                      <th class="text-right font-semibold px-3 py-2.5">Reçues</th>
+                      <th class="text-right font-semibold px-3 py-2.5">Utilisées</th>
+                      <th class="text-right font-semibold px-3 py-2.5">Perdues</th>
+                      <th class="text-right font-semibold px-3 py-2.5">Stock fin</th>
+                      <th class="text-right font-semibold px-5 py-2.5">Taux perte</th>
+                    </tr>
+                  </thead>
+                  <tbody id="stockTable" class="num"></tbody>
+                </table>
+              </div>
+
+              <!-- Section 3: Observations -->
+              <div class="p-5 border-t border-ink-200">
+                <div class="text-[11px] uppercase tracking-wider font-semibold text-ink-500 mb-1">Section 3</div>
+                <h3 class="text-[14.5px] font-bold text-ink-900 mb-2">Observations et difficultés rencontrées</h3>
+                <textarea class="w-full h-24 px-3 py-2 rounded-lg border border-ink-200 text-[13px] focus:border-mint-400 focus:outline-none" placeholder="Ex : rupture de stock BCG du 18 au 21 mai, sorties mobiles annulées pour cause de pluie le 14/05…">Rupture de stock BCG du 18 au 21/05 — 7 enfants reprogrammés. Une sortie en équipe mobile vers Douar Aït Ali annulée le 14/05 (intempéries) et reportée au 28/05.</textarea>
+              </div>
+            </div>
+
+            <!-- Placeholder panels for other tabs -->
+            <div data-tab-panel="pf" class="p-8 text-center text-ink-500 text-[13px]">Section <span class="font-semibold text-ink-800">Planning Familial</span> — complétée. <button data-toast="Section ouverte" class="text-mint-700 font-semibold hover:underline ml-1">Voir / éditer</button></div>
+            <div data-tab-panel="cpn" class="p-8 text-center text-ink-500 text-[13px]">Section <span class="font-semibold text-ink-800">CPN</span> — complétée. <button data-toast="Section ouverte" class="text-mint-700 font-semibold hover:underline ml-1">Voir / éditer</button></div>
+            <div data-tab-panel="cpon" class="p-8 text-center text-ink-500 text-[13px]">Section <span class="font-semibold text-ink-800">CPoN</span> — complétée.</div>
+            <div data-tab-panel="nut" class="p-8 text-center text-ink-500 text-[13px]">Section <span class="font-semibold text-ink-800">Nutrition</span> — 45 % complétée. 6 champs restants. <button data-toast="Section ouverte" class="text-mint-700 font-semibold hover:underline ml-1">Compléter</button></div>
+            <div data-tab-panel="dpc" class="p-8 text-center text-ink-500 text-[13px]">Section <span class="font-semibold text-ink-800">DPCSCU</span> — non commencée.</div>
+            <div data-tab-panel="ist" class="p-8 text-center text-ink-500 text-[13px]">Section <span class="font-semibold text-ink-800">IST/SIDA</span> — 35 % complétée.</div>
+            <div data-tab-panel="cme" class="p-8 text-center text-ink-500 text-[13px]">Section <span class="font-semibold text-ink-800">CME &lt;5 ans</span> — 80 % complétée.</div>
+            <div data-tab-panel="sc" class="p-8 text-center text-ink-500 text-[13px]">Section <span class="font-semibold text-ink-800">SC</span> — 60 % complétée.</div>
+            <div data-tab-panel="smc" class="p-8 text-center text-ink-500 text-[13px]">Section <span class="font-semibold text-ink-800">SMC</span> — 25 % complétée.</div>
+          </div>
+        </div>
+
+        <!-- right: progression -->
+        <aside class="col-span-3 space-y-5 sticky top-[80px] self-start">
+          <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+            <h3 class="text-[13.5px] font-bold text-ink-900 mb-3">Progression de la fiche</h3>
+            <div class="flex items-center gap-4">
+              <svg viewBox="0 0 80 80" class="w-24 h-24">
+                <circle cx="40" cy="40" r="32" stroke="#EEF2F0" stroke-width="9" fill="none"/>
+                <circle cx="40" cy="40" r="32" stroke="#3A8C61" stroke-width="9" fill="none" stroke-dasharray="201" stroke-dashoffset="52" stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                <text x="40" y="45" text-anchor="middle" font-size="18" font-weight="700" fill="#0F1A14">74%</text>
+              </svg>
+              <div>
+                <div class="text-[12px] text-ink-500">Sections</div>
+                <div class="text-[18px] font-bold num">7 / 10</div>
+              </div>
+            </div>
+
+            <div class="mt-5 space-y-2 text-[12px]">
+              <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-mint-600"></span><span class="flex-1">PF, CPN, CPoN</span><span class="text-ink-500">complet</span></div>
+              <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span><span class="flex-1">Vaccination, Nutrition</span><span class="text-ink-500">partiel</span></div>
+              <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span><span class="flex-1">DPCSCU</span><span class="text-ink-500">vide</span></div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-ink-100">
+              <button data-toast="La fiche doit être complète avant la soumission" class="w-full h-11 rounded-xl bg-ink-200 text-ink-500 text-[13px] font-bold cursor-not-allowed flex items-center justify-center gap-2">
+                <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Soumettre la fiche
+              </button>
+              <p class="text-[11px] text-ink-500 text-center mt-2">Disponible à 100 % de complétion</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+            <h3 class="text-[13.5px] font-bold text-ink-900 mb-2">Historique récent</h3>
+            <ul class="space-y-2.5 text-[12px]">
+              <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-mint-600 mt-2"></span><div><div class="font-semibold">Avril 2026</div><div class="text-ink-500 text-[11px]">Soumise le 30/04 — validée</div></div></li>
+              <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-mint-600 mt-2"></span><div><div class="font-semibold">Mars 2026</div><div class="text-ink-500 text-[11px]">Soumise le 02/04 — validée</div></div></li>
+              <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-amber-400 mt-2"></span><div><div class="font-semibold">Février 2026</div><div class="text-ink-500 text-[11px]">Soumise tardivement le 05/03</div></div></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="app/chrome.js"></script>
+<script>
+  Chrome.mount({
+    active: 'fiche',
+    breadcrumb: ['CSU Moussa Bnou Nouceir', 'Reporting', 'Fiche mensuelle']
+  });
+
+  // tab visual state for fiche
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(x => {
+        x.classList.remove('border-mint-600','text-ink-900','is-active');
+        x.classList.add('border-transparent','text-ink-500');
+      });
+      b.classList.add('border-mint-600','text-ink-900','is-active');
+      b.classList.remove('border-transparent','text-ink-500');
+    });
+  });
+
+  // Populate vaccination rows
+  (function () {
+    const rows = [
+      ['BCG (à la naissance)',          42, 28, 14, 5, 42, 100],
+      ['Hep.B (à la naissance)',        42, 27, 14, 5, 41,  98],
+      ['VPO 0 (à la naissance)',        42, 27, 13, 4, 40,  95],
+      ['VPO 1 / Penta 1',               40, 26, 14, 6, 40, 100],
+      ['VPO 2 / Penta 2',               40, 25, 13, 5, 38,  95],
+      ['VPO 3 / Penta 3',               40, 22, 12, 5, 34,  85],
+      ['VAR 1 (9 mois)',                38, 24, 11, 4, 35,  92],
+      ['VAR 2 (18 mois)',               36, 18,  9, 3, 27,  75],
+      ['DTC Rappel',                    35, 21, 10, 3, 31,  88],
+      ['Pneumo 1 / 2 / 3',              40, 26, 13, 5, 39,  97],
+      ['Rotavirus 1 / 2',               40, 25, 13, 5, 38,  95],
+    ];
+    const tbody = document.getElementById('vaccTable');
+    tbody.innerHTML = rows.map(r => {
+      const pct = r[6];
+      const pctClass = pct >= 95 ? 'text-mint-700 bg-mint-100' : pct >= 80 ? 'text-amber-700 bg-amber-100' : 'text-rose-700 bg-rose-100';
+      return `<tr class="fm-row hover:bg-ink-50/30">
+        <td class="px-5 py-2 font-semibold text-ink-800 num-0">${r[0]}</td>
+        <td class="px-3 py-2 text-right text-ink-500">${r[1]}</td>
+        <td class="px-3 py-2 text-right fm-num"><input value="${r[2]}" class="w-16 px-2 py-1 rounded-md text-right border border-transparent hover:border-ink-200 focus:border-mint-400 focus:bg-mint-50 outline-none" /></td>
+        <td class="px-3 py-2 text-right fm-num"><input value="${r[3]}" class="w-16 px-2 py-1 rounded-md text-right border border-transparent hover:border-ink-200 focus:border-mint-400 focus:bg-mint-50 outline-none" /></td>
+        <td class="px-3 py-2 text-right fm-num"><input value="${r[4]}" class="w-16 px-2 py-1 rounded-md text-right border border-transparent hover:border-ink-200 focus:border-mint-400 focus:bg-mint-50 outline-none" /></td>
+        <td class="px-3 py-2 text-right font-bold bg-mint-50/60">${r[5]}</td>
+        <td class="px-5 py-2 text-right"><span class="text-[11px] font-bold ${pctClass} px-1.5 py-0.5 rounded-md num">${pct} %</span></td>
+      </tr>`;
+    }).join('');
+  })();
+
+  // Populate stock rows
+  (function () {
+    const rows = [
+      ['BCG',         18, 30, 32,  2, 14, 6.3],
+      ['VPO',         42, 50, 60,  3, 29, 4.8],
+      ['Penta',       30, 40, 58,  2, 10, 3.3],
+      ['VAR',         24, 35, 32,  1, 26, 3.0],
+      ['Hep.B',       28, 30, 27,  0, 31, 0.0],
+      ['Rotavirus',   20, 40, 38,  1, 21, 2.6],
+    ];
+    const tbody = document.getElementById('stockTable');
+    tbody.innerHTML = rows.map(r => `<tr class="fm-row hover:bg-ink-50/30">
+      <td class="px-5 py-2 font-semibold text-ink-800">${r[0]}</td>
+      <td class="px-3 py-2 text-right">${r[1]}</td>
+      <td class="px-3 py-2 text-right">${r[2]}</td>
+      <td class="px-3 py-2 text-right">${r[3]}</td>
+      <td class="px-3 py-2 text-right"><span class="${r[4] > 1 ? 'text-rose-700 font-semibold' : 'text-ink-700'}">${r[4]}</span></td>
+      <td class="px-3 py-2 text-right">${r[5]}</td>
+      <td class="px-5 py-2 text-right">
+        <span class="text-[11px] font-bold ${r[6] <= 5 ? 'text-mint-700 bg-mint-100' : 'text-amber-700 bg-amber-100'} px-1.5 py-0.5 rounded-md num">${r[6]} %</span>
+      </td>
+    </tr>`).join('');
+  })();
+</script>
+
+</body>
+</html>
