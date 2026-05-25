@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Sehha — Vaccination</title>
-<meta name="viewport" content="width=1440" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="app/tailwind-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,16 +11,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app/styles.css">
 </head>
-<body class="min-w-[1440px]">
+<body class="">
 
 <div class="flex min-h-screen">
   <div id="chrome"></div>
 
   <main id="main" class="flex-1 min-w-0">
-    <div class="px-7 py-6 space-y-6">
+    <div class="px-4 py-4 space-y-5 sm:px-6 sm:py-5 lg:px-7 lg:py-6 lg:space-y-6">
 
       <!-- header row -->
-      <div class="flex items-end justify-between">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <div class="text-[11px] uppercase tracking-[0.14em] text-ink-500 font-semibold mb-1.5">Programme · Vaccination</div>
           <h1 class="text-[26px] font-bold tracking-tight text-ink-900 leading-tight">Programme National d'Immunisation</h1>
@@ -43,7 +43,7 @@
       </div>
 
       <!-- KPI donut cards -->
-      <div class="grid grid-cols-4 gap-5">
+      <div class="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
         <!-- KPI 1 -->
         <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
           <div class="flex items-start justify-between mb-3">
@@ -134,9 +134,9 @@
       </div>
 
       <!-- Calendar + day details -->
-      <div class="grid grid-cols-12 gap-5">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5">
         <!-- big calendar -->
-        <div class="col-span-7 bg-white rounded-2xl border border-ink-200 shadow-card overflow-hidden">
+        <div class="lg:col-span-7 bg-white rounded-2xl border border-ink-200 shadow-card overflow-hidden">
           <div class="flex items-center justify-between px-5 py-4 border-b border-ink-100">
             <div>
               <h3 class="text-[15px] font-bold text-ink-900">Calendrier vaccinal</h3>
@@ -209,7 +209,7 @@
         </div>
 
         <!-- day details -->
-        <div class="col-span-5 bg-white rounded-2xl border border-ink-200 shadow-card overflow-hidden flex flex-col">
+        <div class="lg:col-span-5 bg-white rounded-2xl border border-ink-200 shadow-card overflow-hidden flex flex-col">
           <div class="flex items-center justify-between px-5 py-4 border-b border-ink-100">
             <div>
               <div class="text-[11px] uppercase tracking-[0.14em] text-ink-500 font-semibold">Aujourd'hui</div>
@@ -231,9 +231,9 @@
       </div>
 
       <!-- Stacked bars + recall table -->
-      <div class="grid grid-cols-12 gap-5">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5">
         <!-- stacked -->
-        <div class="col-span-7 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+        <div class="lg:col-span-7 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
           <div class="flex items-start justify-between mb-4">
             <div>
               <h3 class="text-[15px] font-bold text-ink-900">Vaccinations par antigène</h3>
@@ -287,7 +287,7 @@
         </div>
 
         <!-- side cards: drop-off + cohort funnel -->
-        <div class="col-span-5 bg-white rounded-2xl border border-ink-200 shadow-card p-5 flex flex-col">
+        <div class="lg:col-span-5 bg-white rounded-2xl border border-ink-200 shadow-card p-5 flex flex-col">
           <div class="flex items-start justify-between mb-4">
             <div>
               <h3 class="text-[15px] font-bold text-ink-900">Cohorte 2026 — taux d'abandon</h3>
@@ -376,7 +376,7 @@
           </div>
         </div>
 
-        <table class="w-full text-[12.5px]">
+        <div class="table-scroll"><table class="w-full text-[12.5px]">
           <thead class="text-[11px] uppercase tracking-wider text-ink-500 bg-ink-50/60">
             <tr>
               <th class="text-left font-semibold px-5 py-2.5">Enfant</th>
@@ -389,7 +389,7 @@
             </tr>
           </thead>
           <tbody id="recallBody" class="divide-y divide-ink-100"></tbody>
-        </table>
+        </table></div>
 
         <!-- pagination -->
         <div class="flex items-center justify-between px-5 py-3 border-t border-ink-100 text-[12px] text-ink-500">

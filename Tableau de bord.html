@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Sehha — Tableau de bord</title>
-<meta name="viewport" content="width=1440" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="app/styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,13 +71,13 @@
   ::-webkit-scrollbar-track { background: transparent; }
 </style>
 </head>
-<body class="min-w-[1440px]">
+<body class="">
 
 <!-- ───────────────────────── LAYOUT ───────────────────────── -->
 <div class="flex min-h-screen">
 
   <!-- ░░░ SIDEBAR ░░░ -->
-  <aside class="w-[248px] shrink-0 bg-white border-r border-ink-200 flex flex-col">
+  <aside id="sehha-sidebar" class="w-[248px] shrink-0 bg-white border-r border-ink-200 flex-col sticky top-0 h-screen overflow-y-auto">
     <!-- brand -->
     <div class="h-[68px] px-5 flex items-center gap-2.5 border-b border-ink-200">
       <div class="w-9 h-9 rounded-xl bg-mint-600 grid place-items-center shadow-sm relative">
@@ -165,16 +165,20 @@
   <!-- ░░░ MAIN ░░░ -->
   <main class="flex-1 min-w-0">
     <!-- topbar -->
-    <header class="h-[68px] bg-white border-b border-ink-200 px-7 flex items-center gap-6">
-      <!-- breadcrumb -->
+    <header class="h-[60px] lg:h-[68px] bg-white border-b border-ink-200 px-4 lg:px-7 flex items-center gap-3 lg:gap-6 sticky top-0 z-30">
+      <!-- hamburger (mobile/tablet) -->
+      <button id="mob-menu-btn" class="lg:hidden w-9 h-9 rounded-lg border border-ink-200 grid place-items-center text-ink-700 hover:bg-ink-50 shrink-0" aria-label="Menu">
+        <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+            <!-- breadcrumb -->
       <div class="flex items-center gap-2 text-[13px]">
-        <span class="text-ink-500">CSU Moussa Bnou Nouceir</span>
+        <span class="text-ink-500 hidden sm:inline">CSU Moussa Bnou Nouceir</span>
         <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-ink-300" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         <span class="text-ink-900 font-semibold">Tableau de bord</span>
       </div>
 
       <!-- search -->
-      <div class="flex-1 max-w-[420px] ml-4">
+      <div class="hidden sm:block flex-1 max-w-[380px] ml-2">
         <label class="flex items-center gap-2 h-10 px-3.5 rounded-xl bg-ink-50 border border-transparent focus-within:border-mint-400 focus-within:bg-white">
           <svg viewBox="0 0 24 24" class="w-4 h-4 text-ink-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
           <input class="bg-transparent outline-none text-[13px] text-ink-800 placeholder:text-ink-500 flex-1" placeholder="Rechercher un patient, RDV, programme…" />
@@ -183,38 +187,38 @@
       </div>
 
       <!-- right cluster -->
-      <div class="flex items-center gap-2.5 ml-auto">
+      <div class="flex items-center gap-1.5 lg:gap-2.5 ml-auto">
         <!-- lang -->
-        <button data-lang-toggle class="h-10 px-3 rounded-xl border border-ink-200 text-[12px] font-semibold flex items-center gap-1.5 hover:bg-ink-50">
+        <button data-lang-toggle class="hidden sm:flex h-9 lg:h-10 px-2.5 lg:px-3 rounded-xl border border-ink-200 text-[12px] font-semibold items-center gap-1.5 hover:bg-ink-50">
           <span class="text-mint-700" data-lang-fr>FR</span><span class="text-ink-300">/</span><span class="text-ink-400" data-lang-ar>AR</span>
         </button>
         <!-- date -->
-        <button data-toast="Sélectionnez une date pour filtrer" class="h-10 px-3 rounded-xl border border-ink-200 text-[12px] font-semibold text-ink-700 flex items-center gap-2 hover:bg-ink-50">
+        <button data-toast="Calendrier — 25 mai 2026" class="hidden md:flex h-9 lg:h-10 px-2.5 lg:px-3 rounded-xl border border-ink-200 text-[12px] font-semibold text-ink-700 items-center gap-2 hover:bg-ink-50">
           <svg viewBox="0 0 24 24" class="w-4 h-4 text-ink-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
           25/05/2026
         </button>
         <!-- bell -->
-        <button data-toast="3 nouvelles notifications" class="w-10 h-10 rounded-xl border border-ink-200 grid place-items-center relative hover:bg-ink-50">
+        <button data-toast="3 nouvelles notifications" class="w-9 h-9 lg:w-10 lg:h-10 rounded-xl border border-ink-200 grid place-items-center relative hover:bg-ink-50">
           <svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-ink-700" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
           <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white"></span>
         </button>
         <!-- avatar -->
-        <div class="flex items-center gap-3 pl-2.5 ml-1 border-l border-ink-200 h-10">
-          <div class="w-9 h-9 rounded-full bg-mint-200 grid place-items-center text-mint-800 font-bold text-[13px]">FE</div>
-          <div class="leading-tight pr-1">
+        <div class="flex items-center gap-2 pl-2 lg:pl-2.5 ml-0.5 border-l border-ink-200 h-9 lg:h-10">
+          <div class="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-mint-200 grid place-items-center text-mint-800 font-bold text-[12px] lg:text-[13px] shrink-0">FE</div>
+          <div class="leading-tight pr-1 hidden md:block">
             <div class="text-[13px] font-semibold text-ink-900">Fatima El Idrissi</div>
             <div class="text-[11px] text-ink-500">Infirmière chef</div>
           </div>
-          <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-ink-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-ink-400 hidden md:block" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </div>
       </div>
     </header>
 
     <!-- ░░ CONTENT ░░ -->
-    <div class="px-7 py-6 space-y-6">
+    <div class="px-4 py-4 space-y-5 sm:px-6 sm:py-5 lg:px-7 lg:py-6 lg:space-y-6">
 
       <!-- greeting + actions -->
-      <div class="flex items-end justify-between">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <div class="text-[11px] uppercase tracking-[0.14em] text-ink-500 font-semibold mb-1.5">Lundi · 25 Mai 2026</div>
           <h1 class="text-[26px] font-bold tracking-tight text-ink-900 leading-tight">Bonjour Fatima, voici votre journée.</h1>
@@ -237,7 +241,7 @@
       </div>
 
       <!-- ═══ KPI ROW ═══ -->
-      <div class="grid grid-cols-4 gap-5">
+      <div class="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
         <!-- KPI 1 -->
         <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
           <div class="flex items-center justify-between mb-3">
@@ -247,7 +251,7 @@
               </div>
               <div class="text-[12px] text-ink-600 font-medium">Patients ce mois</div>
             </div>
-            <button class="w-6 h-6 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
+            <button data-toast="Options" class="w-6 h-6 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
               <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
             </button>
           </div>
@@ -273,7 +277,7 @@
               </div>
               <div class="text-[12px] text-ink-600 font-medium">RDV aujourd'hui</div>
             </div>
-            <button class="w-6 h-6 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
+            <button data-toast="Options" class="w-6 h-6 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
               <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
             </button>
           </div>
@@ -300,7 +304,7 @@
               </div>
               <div class="text-[12px] text-ink-600 font-medium">Vaccinations en attente</div>
             </div>
-            <button class="w-6 h-6 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
+            <button data-toast="Options" class="w-6 h-6 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
               <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
             </button>
           </div>
@@ -348,9 +352,9 @@
       </div>
 
       <!-- ═══ MIDDLE ROW: AREA CHART + CALENDAR ═══ -->
-      <div class="grid grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-5">
         <!-- area chart -->
-        <div class="col-span-2 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
           <div class="flex items-start justify-between mb-4">
             <div>
               <h3 class="text-[15px] font-bold text-ink-900">Performance par programme</h3>
@@ -362,11 +366,11 @@
             </div>
             <div class="flex items-center gap-1.5">
               <!-- segmented filter -->
-              <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200">
-                <button class="px-2.5 py-1 rounded-lg text-[11.5px] font-semibold text-ink-500">Vaccination</button>
-                <button class="px-2.5 py-1 rounded-lg text-[11.5px] font-semibold bg-white text-ink-900 shadow-sm">Tous</button>
-                <button class="px-2.5 py-1 rounded-lg text-[11.5px] font-semibold text-ink-500">CPN</button>
-                <button class="px-2.5 py-1 rounded-lg text-[11.5px] font-semibold text-ink-500">PF</button>
+              <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+                <button class="seg-btn">Vaccination</button>
+                <button class="seg-btn is-active">Tous</button>
+                <button class="seg-btn">CPN</button>
+                <button class="seg-btn">PF</button>
               </div>
               <button class="h-8 px-2.5 rounded-xl border border-ink-200 text-[11.5px] font-semibold text-ink-700 flex items-center gap-1.5 hover:bg-ink-50">
                 12 derniers mois
@@ -467,10 +471,10 @@
               <h3 class="text-[15px] font-bold text-ink-900 mt-0.5">Mai 2026</h3>
             </div>
             <div class="flex items-center gap-1">
-              <button class="w-8 h-8 rounded-lg border border-ink-200 grid place-items-center hover:bg-ink-50">
+              <button data-toast="Avril 2026" class="w-8 h-8 rounded-lg border border-ink-200 grid place-items-center hover:bg-ink-50">
                 <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
               </button>
-              <button class="w-8 h-8 rounded-lg border border-ink-200 grid place-items-center hover:bg-ink-50">
+              <button data-toast="Juin 2026" class="w-8 h-8 rounded-lg border border-ink-200 grid place-items-center hover:bg-ink-50">
                 <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
               </button>
             </div>
@@ -542,16 +546,16 @@
       </div>
 
       <!-- ═══ BOTTOM ROW: PROGRAMS BARS + APPOINTMENTS + ALERTS ═══ -->
-      <div class="grid grid-cols-12 gap-5">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5">
 
         <!-- Programs bars -->
-        <div class="col-span-5 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+        <div class="lg:col-span-5 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
           <div class="flex items-start justify-between mb-4">
             <div>
               <h3 class="text-[15px] font-bold text-ink-900">Programmes — performance ce mois</h3>
               <p class="text-[11.5px] text-ink-500 mt-0.5">% atteint vs. cible mensuelle · comparé à avril 2026</p>
             </div>
-            <button class="text-[11.5px] font-semibold text-mint-700 hover:underline">Voir tout</button>
+            <button data-toast="Tous les programmes" class="text-[11.5px] font-semibold text-mint-700 hover:underline">Voir tout</button>
           </div>
 
           <div class="space-y-3.5">
@@ -620,13 +624,13 @@
         </div>
 
         <!-- Upcoming appointments -->
-        <div class="col-span-4 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
+        <div class="lg:col-span-4 bg-white rounded-2xl border border-ink-200 shadow-card p-5">
           <div class="flex items-start justify-between mb-4">
             <div>
               <h3 class="text-[15px] font-bold text-ink-900">Prochains rendez-vous</h3>
               <p class="text-[11.5px] text-ink-500 mt-0.5">Aujourd'hui — Lundi 25 mai</p>
             </div>
-            <button class="text-[11.5px] font-semibold text-mint-700 hover:underline">Tout voir (14)</button>
+            <button data-toast="14 rendez-vous du jour" class="text-[11.5px] font-semibold text-mint-700 hover:underline">Tout voir (14)</button>
           </div>
 
           <ul class="divide-y divide-ink-100">
@@ -688,7 +692,7 @@
         </div>
 
         <!-- Alerts -->
-        <div class="col-span-3 bg-white rounded-2xl border border-ink-200 shadow-card p-5 flex flex-col">
+        <div class="lg:col-span-3 bg-white rounded-2xl border border-ink-200 shadow-card p-5 flex flex-col">
           <div class="flex items-start justify-between mb-4">
             <div>
               <h3 class="text-[15px] font-bold text-ink-900 flex items-center gap-2">
@@ -697,7 +701,7 @@
               </h3>
               <p class="text-[11.5px] text-ink-500 mt-0.5">À traiter cette semaine</p>
             </div>
-            <button class="w-7 h-7 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
+            <button data-toast="Options alertes" class="w-7 h-7 rounded-md text-ink-400 hover:bg-ink-50 grid place-items-center">
               <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
             </button>
           </div>
@@ -713,7 +717,7 @@
                   <div class="text-[11px] text-ink-500 mt-0.5">Penta 3 — &gt; 14 jours après la date prévue</div>
                 </div>
               </div>
-              <button class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Voir la liste →</button>
+              <button data-toast="Liste des vaccinations en retard" class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Voir la liste →</button>
             </li>
 
             <li class="rounded-xl border border-amber-200 bg-amber-50/50 p-3">
@@ -726,7 +730,7 @@
                   <div class="text-[11px] text-ink-500 mt-0.5">Soumission avant le 31/05/2026</div>
                 </div>
               </div>
-              <button class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Compléter →</button>
+              <a href="Fiche mensuelle.html" class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Compléter →</a>
             </li>
 
             <li class="rounded-xl border border-ink-200 p-3">
@@ -739,7 +743,7 @@
                   <div class="text-[11px] text-ink-500 mt-0.5">Femmes enceintes — RDV semaine prochaine</div>
                 </div>
               </div>
-              <button class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Envoyer maintenant →</button>
+              <button data-toast="5 SMS envoyés aux patientes CPN" class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Envoyer maintenant →</button>
             </li>
 
             <li class="rounded-xl border border-ink-200 p-3">
@@ -752,7 +756,7 @@
                   <div class="text-[11px] text-ink-500 mt-0.5">11 doses restantes (≈ 4 jours)</div>
                 </div>
               </div>
-              <button class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Commander →</button>
+              <button data-toast="Commande BCG initiée — délai 48h" class="mt-2 text-[11px] font-semibold text-mint-700 hover:underline">Commander →</button>
             </li>
           </ul>
         </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Sehha — Rendez-vous</title>
-<meta name="viewport" content="width=1440" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="app/tailwind-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,16 +24,16 @@
   .ev-ist  { background:#FEE2E2; color:#7F1D1D; } .ev-ist .dot { background:#DC2626; }
 </style>
 </head>
-<body class="min-w-[1440px]">
+<body class="">
 
 <div class="flex min-h-screen">
   <div id="chrome"></div>
 
   <main id="main" class="flex-1 min-w-0">
-    <div class="px-7 py-6 space-y-6">
+    <div class="px-4 py-4 space-y-5 sm:px-6 sm:py-5 lg:px-7 lg:py-6 lg:space-y-6">
 
       <!-- header -->
-      <div class="flex items-end justify-between">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <div class="text-[11px] uppercase tracking-[0.14em] text-ink-500 font-semibold mb-1.5">Espace de travail</div>
           <h1 class="text-[26px] font-bold tracking-tight text-ink-900 leading-tight">Calendrier des rendez-vous</h1>
@@ -53,10 +53,10 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-12 gap-5">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5">
 
         <!-- Left filter sidebar -->
-        <aside class="col-span-3 space-y-5">
+        <aside class="lg:col-span-3 space-y-5">
           <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
             <h3 class="text-[13.5px] font-bold text-ink-900 mb-3">Filtres par programme</h3>
             <ul class="space-y-2">
@@ -133,7 +133,7 @@
         </aside>
 
         <!-- Big calendar -->
-        <div class="col-span-9 bg-white rounded-2xl border border-ink-200 shadow-card overflow-hidden">
+        <div class="lg:col-span-9 bg-white rounded-2xl border border-ink-200 shadow-card overflow-hidden">
           <div class="flex items-center justify-between px-5 py-4 border-b border-ink-100">
             <div class="flex items-center gap-2">
               <button class="w-9 h-9 rounded-lg border border-ink-200 grid place-items-center hover:bg-ink-50" data-toast="Avril 2026"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>

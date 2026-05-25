@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Sehha — Fiche mensuelle</title>
-<meta name="viewport" content="width=1440" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="app/tailwind-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,16 +16,16 @@
   .fm-num input { font-variant-numeric: tabular-nums; }
 </style>
 </head>
-<body class="min-w-[1440px]">
+<body class="">
 
 <div class="flex min-h-screen">
   <div id="chrome"></div>
 
   <main id="main" class="flex-1 min-w-0">
-    <div class="px-7 py-6 space-y-6">
+    <div class="px-4 py-4 space-y-5 sm:px-6 sm:py-5 lg:px-7 lg:py-6 lg:space-y-6">
 
       <!-- header -->
-      <div class="flex items-end justify-between">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <div class="text-[11px] uppercase tracking-[0.14em] text-ink-500 font-semibold mb-1.5">Reporting</div>
           <h1 class="text-[26px] font-bold tracking-tight text-ink-900 leading-tight">Fiche mensuelle d'activités</h1>
@@ -44,10 +44,10 @@
       </div>
 
       <!-- meta + tabs + body + sidebar -->
-      <div class="grid grid-cols-12 gap-5">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5">
 
         <!-- left: form -->
-        <div class="col-span-9 space-y-5">
+        <div class="lg:col-span-9 space-y-5">
           <!-- meta panel -->
           <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
             <div class="grid grid-cols-5 gap-4">
@@ -105,7 +105,7 @@
               </div>
 
               <div class="overflow-x-auto">
-                <table class="w-full text-[12.5px]">
+                <div class="table-scroll"><table class="w-full text-[12.5px]">
                   <thead class="text-[10.5px] uppercase tracking-wider text-ink-500 bg-ink-50/60">
                     <tr>
                       <th class="text-left font-semibold px-5 py-2.5">Antigène / Dose</th>
@@ -118,7 +118,7 @@
                     </tr>
                   </thead>
                   <tbody id="vaccTable" class="num"></tbody>
-                </table>
+                </table></div>
               </div>
 
               <!-- Section 2 -->
@@ -131,7 +131,7 @@
               </div>
 
               <div class="overflow-x-auto">
-                <table class="w-full text-[12.5px]">
+                <div class="table-scroll"><table class="w-full text-[12.5px]">
                   <thead class="text-[10.5px] uppercase tracking-wider text-ink-500 bg-ink-50/60">
                     <tr>
                       <th class="text-left font-semibold px-5 py-2.5">Antigène</th>
@@ -144,7 +144,7 @@
                     </tr>
                   </thead>
                   <tbody id="stockTable" class="num"></tbody>
-                </table>
+                </table></div>
               </div>
 
               <!-- Section 3: Observations -->
@@ -169,7 +169,7 @@
         </div>
 
         <!-- right: progression -->
-        <aside class="col-span-3 space-y-5 sticky top-[80px] self-start">
+        <aside class="lg:col-span-3 space-y-5 sticky top-[80px] self-start">
           <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
             <h3 class="text-[13.5px] font-bold text-ink-900 mb-3">Progression de la fiche</h3>
             <div class="flex items-center gap-4">
