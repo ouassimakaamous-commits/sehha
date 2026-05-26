@@ -28,7 +28,7 @@
           </div>
           <h1 class="text-[24px] font-bold tracking-tight text-ink-900">Dossier patient</h1>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="page-actions">
           <button data-toast="Export PDF du dossier" class="h-10 px-3.5 rounded-xl border border-ink-200 text-[12.5px] font-semibold text-ink-700 flex items-center gap-2 hover:bg-ink-50 bg-white">
             <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
             Exporter dossier
@@ -97,7 +97,7 @@
         <div class="lg:col-span-9 space-y-5">
 
           <!-- KPI strip -->
-          <div class="grid grid-cols-4 gap-4">
+          <div class="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
             <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-4">
               <div class="text-[11px] text-ink-500 font-semibold">Consultations</div>
               <div class="text-[24px] font-bold num mt-1">14</div>
@@ -121,7 +121,7 @@
           </div>
 
           <!-- Programs grid -->
-          <div class="grid grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
             <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-4">
               <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center gap-2">
@@ -178,7 +178,7 @@
                 <p class="text-[11.5px] text-ink-500 mt-0.5">Chronologie complète multi-programme</p>
               </div>
               <div class="flex items-center gap-2">
-                <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+                <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200 overflow-x-auto max-w-full" data-seg-group>
                   <button class="seg-btn is-active">Tous</button>
                   <button class="seg-btn">CPN</button>
                   <button class="seg-btn">Vaccin.</button>
@@ -250,7 +250,7 @@
                 Ajouter
               </button>
             </div>
-            <div class="grid grid-cols-4 gap-3">
+            <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
               <a href="#" data-toast="Ouverture du carnet" class="border border-ink-200 rounded-xl p-3 hover:border-mint-400 hover:bg-mint-50/40 transition">
                 <div class="aspect-[4/3] stripe-bg rounded-lg mb-2 grid place-items-center">
                   <svg viewBox="0 0 24 24" class="w-6 h-6 text-ink-500" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>

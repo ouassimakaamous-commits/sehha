@@ -25,7 +25,7 @@
           <h1 class="text-[26px] font-bold tracking-tight text-ink-900 leading-tight">Espacement des naissances</h1>
           <p class="text-[13.5px] text-ink-600 mt-1">418 clientes actives · 6 méthodes proposées · taux de continuité <span class="font-semibold text-mint-700">84 %</span></p>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="page-actions">
           <button data-toast="Export PDF généré" class="h-10 px-3.5 rounded-xl border border-ink-200 text-[12.5px] font-semibold text-ink-700 flex items-center gap-2 hover:bg-ink-50 bg-white">
             <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
             Exporter
@@ -79,14 +79,14 @@
               <h3 class="text-[15px] font-bold text-ink-900">Distribution par méthode</h3>
               <p class="text-[11.5px] text-ink-500 mt-0.5">418 clientes actives</p>
             </div>
-            <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+            <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200 overflow-x-auto max-w-full" data-seg-group>
               <button class="seg-btn is-active">Mois</button>
               <button class="seg-btn">Trim.</button>
               <button class="seg-btn">Année</button>
             </div>
           </div>
 
-          <div class="flex items-center gap-6">
+          <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
             <svg viewBox="0 0 120 120" class="w-44 h-44">
               <!-- COC 38% -->
               <circle cx="60" cy="60" r="44" stroke="#2D6F4D" stroke-width="20" fill="none" stroke-dasharray="105.1 276.5" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>

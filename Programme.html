@@ -25,7 +25,7 @@
           <h1 class="text-[26px] font-bold tracking-tight text-ink-900 leading-tight" id="pgTitle">Programme</h1>
           <p class="text-[13.5px] text-ink-600 mt-1" id="pgSubtitle">—</p>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="page-actions">
           <button data-toast="Filtre appliqué" class="h-10 px-3.5 rounded-xl border border-ink-200 text-[12.5px] font-semibold text-ink-700 flex items-center gap-2 hover:bg-ink-50 bg-white">
             <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3H2l8 9.5V19l4 2v-8.5L22 3z"/></svg>
             Filtrer
@@ -52,7 +52,7 @@
               <h3 class="text-[15px] font-bold text-ink-900" id="trendTitle">Tendance sur 12 mois</h3>
               <p class="text-[11.5px] text-ink-500 mt-0.5" id="trendSubtitle">—</p>
             </div>
-            <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+            <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200 overflow-x-auto max-w-full" data-seg-group>
               <button class="seg-btn is-active">12 mois</button>
               <button class="seg-btn">6 mois</button>
               <button class="seg-btn">3 mois</button>
@@ -96,12 +96,12 @@
           </div>
           <div class="flex items-center gap-2">
             <button class="h-9 px-3 rounded-xl border border-ink-200 text-[12px] font-semibold flex items-center gap-1.5 hover:bg-ink-50">01/05 → 25/05<svg viewBox="0 0 24 24" class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></button>
-            <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+            <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200 overflow-x-auto max-w-full" data-seg-group>
               <button class="seg-btn is-active">Tous</button>
               <button class="seg-btn">Urbain</button>
               <button class="seg-btn">Rural</button>
             </div>
-            <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+            <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200 overflow-x-auto max-w-full" data-seg-group>
               <button class="seg-btn is-active">F+H</button>
               <button class="seg-btn">F</button>
               <button class="seg-btn">H</button>

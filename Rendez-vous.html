@@ -40,7 +40,7 @@
           <p class="text-[13.5px] text-ink-600 mt-1">Mai 2026 · <span class="font-semibold text-ink-800">312 rendez-vous</span> tous programmes confondus</p>
         </div>
         <div class="flex items-center gap-2">
-          <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+          <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200 overflow-x-auto max-w-full" data-seg-group>
             <button class="seg-btn">Jour</button>
             <button class="seg-btn">Semaine</button>
             <button class="seg-btn is-active">Mois</button>
@@ -56,7 +56,7 @@
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5">
 
         <!-- Left filter sidebar -->
-        <aside class="lg:col-span-3 space-y-5">
+        <aside class="lg:col-span-3 space-y-5 rdv-filters">
           <div class="bg-white rounded-2xl border border-ink-200 shadow-card p-5">
             <h3 class="text-[13.5px] font-bold text-ink-900 mb-3">Filtres par programme</h3>
             <ul class="space-y-2">
@@ -144,11 +144,11 @@
             <div class="text-[11.5px] text-ink-500">Cliquez une journée pour la détailler</div>
           </div>
 
-          <div class="grid grid-cols-7 text-[10.5px] uppercase tracking-wider text-ink-500 font-semibold border-b border-ink-100 bg-ink-50/60">
+          <div class="big-cal-scroll"><div class="big-cal-inner"><div class="grid grid-cols-7 text-[10.5px] uppercase tracking-wider text-ink-500 font-semibold border-b border-ink-100 bg-ink-50/60">
             <div class="px-3 py-2 text-center">Lundi</div><div class="px-3 py-2 text-center">Mardi</div><div class="px-3 py-2 text-center">Mercredi</div><div class="px-3 py-2 text-center">Jeudi</div><div class="px-3 py-2 text-center">Vendredi</div><div class="px-3 py-2 text-center">Samedi</div><div class="px-3 py-2 text-center">Dimanche</div>
           </div>
 
-          <div id="bigGrid" class="grid grid-cols-7 gap-1 p-3"></div>
+          <div id="bigGrid" class="grid grid-cols-7 gap-1 p-3"></div></div></div>
         </div>
       </div>
 
@@ -206,13 +206,14 @@
       `<div class="ev ev-${e.c}"><span class="dot"></span><span class="mono text-[9.5px] opacity-70">${e.t}</span><span class="truncate">${e.l}</span></div>`
     ).join('');
     const more = (day.evs && day.evs.length > 3) ? `<div class="text-[10px] text-ink-500 font-semibold mt-0.5">+${day.evs.length-3} de plus</div>` : '';
+    const rdvCt = (day.evs||[]).length > 0 ? `<div class="rdv-ct hidden text-[9px] font-bold text-mint-700 mt-0.5">${(day.evs||[]).length} RDV</div>` : '';
     const dayLabel = day.today ? "Aujourd'hui" : ('Mai ' + day.d);
     return `<div class="big-day ${day.today ? 'today' : ''}" data-toast="${dayLabel} sélectionné">
       <div class="flex items-center justify-between mb-1.5">
         <div class="text-[12px] font-bold ${day.today ? 'text-mint-700' : 'text-ink-700'}">${day.d}</div>
         ${(day.evs||[]).length > 0 ? `<div class="text-[9.5px] mono text-ink-500">${(day.evs||[]).length} RDV</div>` : ''}
       </div>
-      ${evs}${more}
+      ${evs}${more}${rdvCt}
     </div>`;
   }).join('');
 </script>

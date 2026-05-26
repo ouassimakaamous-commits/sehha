@@ -218,13 +218,13 @@
     <div class="px-4 py-4 space-y-5 sm:px-6 sm:py-5 lg:px-7 lg:py-6 lg:space-y-6">
 
       <!-- greeting + actions -->
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
         <div>
           <div class="text-[11px] uppercase tracking-[0.14em] text-ink-500 font-semibold mb-1.5">Lundi · 25 Mai 2026</div>
           <h1 class="text-[26px] font-bold tracking-tight text-ink-900 leading-tight">Bonjour Fatima, voici votre journée.</h1>
           <p class="text-[13.5px] text-ink-600 mt-1">14 rendez-vous programmés · La fiche du mois doit être soumise dans <span class="font-semibold text-amber-700">6 jours</span>.</p>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="page-actions">
           <button data-toast="Export PDF en préparation…" class="h-10 px-3.5 rounded-xl border border-ink-200 text-[12.5px] font-semibold text-ink-700 flex items-center gap-2 hover:bg-ink-50 bg-white">
             <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
             Exporter
@@ -366,13 +366,13 @@
             </div>
             <div class="flex items-center gap-1.5">
               <!-- segmented filter -->
-              <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200" data-seg-group>
+              <div class="flex p-1 bg-ink-50 rounded-xl border border-ink-200 overflow-x-auto max-w-full" data-seg-group>
                 <button class="seg-btn">Vaccination</button>
                 <button class="seg-btn is-active">Tous</button>
                 <button class="seg-btn">CPN</button>
                 <button class="seg-btn">PF</button>
               </div>
-              <button class="h-8 px-2.5 rounded-xl border border-ink-200 text-[11.5px] font-semibold text-ink-700 flex items-center gap-1.5 hover:bg-ink-50">
+              <button class="h-8 px-2.5 rounded-xl border border-ink-200 text-[11.5px] font-semibold text-ink-700 hidden sm:flex items-center gap-1.5 hover:bg-ink-50">
                 12 derniers mois
                 <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </button>
@@ -481,12 +481,12 @@
           </div>
 
           <!-- weekday header -->
-          <div class="grid grid-cols-7 gap-1 text-[10px] uppercase tracking-wider text-ink-400 font-semibold text-center mb-2">
+          <div class="grid grid-cols-7 gap-0.5 sm:gap-1 text-[9px] sm:text-[10px] uppercase tracking-wider text-ink-400 font-semibold text-center mb-2">
             <div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div><div>D</div>
           </div>
 
           <!-- days -->
-          <div class="grid grid-cols-7 gap-1 text-center text-[12px] num">
+          <div class="grid grid-cols-7 gap-0.5 sm:gap-1 text-center text-[11px] sm:text-[12px] num">
             <!-- prev month -->
             <div class="aspect-square grid place-items-center text-ink-300">28</div>
             <div class="aspect-square grid place-items-center text-ink-300">29</div>
@@ -560,65 +560,65 @@
 
           <div class="space-y-3.5">
             <!-- row template -->
-            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+            <div class="grid grid-cols-[80px_1fr_40px] sm:grid-cols-[120px_1fr_64px_44px] items-center gap-2 sm:gap-3 text-[12px]">
               <div class="font-semibold text-ink-800">Vaccination</div>
               <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-600 rounded-full" style="width:94%"></div></div>
               <div class="num font-semibold text-right">94 %</div>
-              <div class="text-[11px] font-bold text-mint-700 text-right">+3</div>
+              <div class="text-[11px] font-bold text-right prog-delta">+3</div>
             </div>
-            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+            <div class="grid grid-cols-[80px_1fr_40px] sm:grid-cols-[120px_1fr_64px_44px] items-center gap-2 sm:gap-3 text-[12px]">
               <div class="font-semibold text-ink-800">CPN</div>
               <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-600 rounded-full" style="width:88%"></div></div>
               <div class="num font-semibold text-right">88 %</div>
-              <div class="text-[11px] font-bold text-mint-700 text-right">+1</div>
+              <div class="text-[11px] font-bold text-right prog-delta">+1</div>
             </div>
-            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+            <div class="grid grid-cols-[80px_1fr_40px] sm:grid-cols-[120px_1fr_64px_44px] items-center gap-2 sm:gap-3 text-[12px]">
               <div class="font-semibold text-ink-800">Planning familial</div>
               <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-500 rounded-full" style="width:82%"></div></div>
               <div class="num font-semibold text-right">82 %</div>
-              <div class="text-[11px] font-bold text-mint-700 text-right">+5</div>
+              <div class="text-[11px] font-bold text-right prog-delta">+5</div>
             </div>
-            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+            <div class="grid grid-cols-[80px_1fr_40px] sm:grid-cols-[120px_1fr_64px_44px] items-center gap-2 sm:gap-3 text-[12px]">
               <div class="font-semibold text-ink-800">CPoN</div>
               <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-500 rounded-full" style="width:79%"></div></div>
               <div class="num font-semibold text-right">79 %</div>
-              <div class="text-[11px] font-bold text-mint-700 text-right">+2</div>
+              <div class="text-[11px] font-bold text-right prog-delta">+2</div>
             </div>
-            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+            <div class="grid grid-cols-[80px_1fr_40px] sm:grid-cols-[120px_1fr_64px_44px] items-center gap-2 sm:gap-3 text-[12px]">
               <div class="font-semibold text-ink-800">CME &lt;5 ans</div>
               <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-500 rounded-full" style="width:76%"></div></div>
               <div class="num font-semibold text-right">76 %</div>
-              <div class="text-[11px] font-bold text-mint-700 text-right">+4</div>
+              <div class="text-[11px] font-bold text-right prog-delta">+4</div>
             </div>
-            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+            <div class="grid grid-cols-[80px_1fr_40px] sm:grid-cols-[120px_1fr_64px_44px] items-center gap-2 sm:gap-3 text-[12px]">
               <div class="font-semibold text-ink-800">Nutrition</div>
               <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-400 rounded-full" style="width:71%"></div></div>
               <div class="num font-semibold text-right">71 %</div>
-              <div class="text-[11px] font-bold text-ink-500 text-right">0</div>
+              <div class="text-[11px] font-bold text-right prog-delta">0</div>
             </div>
-            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+            <div class="grid grid-cols-[80px_1fr_40px] sm:grid-cols-[120px_1fr_64px_44px] items-center gap-2 sm:gap-3 text-[12px]">
               <div class="font-semibold text-ink-800">SMC</div>
               <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-mint-400 rounded-full" style="width:68%"></div></div>
               <div class="num font-semibold text-right">68 %</div>
-              <div class="text-[11px] font-bold text-mint-700 text-right">+2</div>
+              <div class="text-[11px] font-bold text-right prog-delta">+2</div>
             </div>
-            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+            <div class="grid grid-cols-[80px_1fr_40px] sm:grid-cols-[120px_1fr_64px_44px] items-center gap-2 sm:gap-3 text-[12px]">
               <div class="font-semibold text-ink-800">DPCSCU</div>
               <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:61%"></div></div>
               <div class="num font-semibold text-right">61 %</div>
-              <div class="text-[11px] font-bold text-rose-600 text-right">−4</div>
+              <div class="text-[11px] font-bold text-right prog-delta">−4</div>
             </div>
-            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+            <div class="grid grid-cols-[80px_1fr_40px] sm:grid-cols-[120px_1fr_64px_44px] items-center gap-2 sm:gap-3 text-[12px]">
               <div class="font-semibold text-ink-800">SC</div>
               <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:58%"></div></div>
               <div class="num font-semibold text-right">58 %</div>
-              <div class="text-[11px] font-bold text-rose-600 text-right">−2</div>
+              <div class="text-[11px] font-bold text-right prog-delta">−2</div>
             </div>
-            <div class="grid grid-cols-[120px_1fr_64px_44px] items-center gap-3 text-[12px]">
+            <div class="grid grid-cols-[80px_1fr_40px] sm:grid-cols-[120px_1fr_64px_44px] items-center gap-2 sm:gap-3 text-[12px]">
               <div class="font-semibold text-ink-800">IST / SIDA</div>
               <div class="h-2 bg-ink-100 rounded-full overflow-hidden"><div class="h-full bg-rose-400 rounded-full" style="width:42%"></div></div>
               <div class="num font-semibold text-right">42 %</div>
-              <div class="text-[11px] font-bold text-rose-600 text-right">−7</div>
+              <div class="text-[11px] font-bold text-right prog-delta">−7</div>
             </div>
           </div>
         </div>
